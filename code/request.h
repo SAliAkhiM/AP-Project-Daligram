@@ -19,6 +19,9 @@ public:
      QJsonObject logInRequest(QString username,QString password);
      QJsonObject createGroupRequest(QString groupName ,QString groupTitle ,QString token);
      QJsonObject createChannelRequest(QString ChannelName ,QString ChannelTitle ,QString token);
+     QJsonObject joinGroupRequest(QString groupName , QString token);
+     QJsonObject joinChannelRequest(QString ChannelName ,QString token);
+
     // QJsonObject logInRequest(QString username,QString password);
 
 

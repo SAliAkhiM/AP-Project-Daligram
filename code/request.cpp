@@ -137,4 +137,70 @@ request::request()
  }
 
 
+ QJsonObject request::joinGroupRequest(QString groupName ,QString token){
+
+     QNetworkAccessManager* manager=new QNetworkAccessManager();
+     QNetworkRequest request;
+     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/joingroup?token="+ token +"&group_name="+groupName));
+
+     QNetworkReply * reply=manager->get(request);
+
+
+     while(!reply->isFinished()){
+         QCoreApplication::processEvents();
+     }
+
+
+     if(reply->error()==QNetworkReply::NoError){
+
+         QByteArray data=reply->readAll();
+         QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
+
+         QJsonObject jsonobj=jsonDoc.object();
+         //QString f=jsonobj.value("message").toString();
+
+         return jsonobj ;
+        // return f ;
+
+
+     }
+
+
+
+ }
+
+
+ QJsonObject request::joinChannelRequest(QString channelName ,QString token){
+
+     QNetworkAccessManager* manager=new QNetworkAccessManager();
+     QNetworkRequest request;
+     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/joinchannel?token="+ token +"&channel_name="+channelName));
+
+     QNetworkReply * reply=manager->get(request);
+
+
+     while(!reply->isFinished()){
+         QCoreApplication::processEvents();
+     }
+
+
+     if(reply->error()==QNetworkReply::NoError){
+
+         QByteArray data=reply->readAll();
+         QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
+
+         QJsonObject jsonobj=jsonDoc.object();
+         //QString f=jsonobj.value("message").toString();
+
+         return jsonobj ;
+        // return f ;
+
+
+     }
+
+
+
+ }
+
+
 
