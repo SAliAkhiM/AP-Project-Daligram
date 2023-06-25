@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>470</y>
-     <width>191</width>
+     <x>290</x>
+     <y>420</y>
+     <width>171</width>
      <height>29</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string>sign up</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -36,25 +36,28 @@
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_3">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_fname">
+      <property name="inputMask">
+       <string/>
+      </property>
       <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
        <string>first name</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_fname"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>last name</string>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_lname">
+      <property name="placeholderText">
+       <string notr="true">last name</string>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
       </property>
      </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_lname"/>
     </item>
     <item row="2" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -85,6 +88,45 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>580</y>
+     <width>191</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>sign up</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>470</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Do you have an account?</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>460</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>log in</string>
+   </property>
   </widget>
  </widget>
  <resources/>

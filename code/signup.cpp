@@ -1,5 +1,8 @@
 #include "signup.h"
 #include "ui_signup.h"
+#include"request.h"
+#include"login1.h"
+
 
 #include<QMessageBox>
 #include <QApplication>
@@ -11,6 +14,7 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+
 
 signUp::signUp(QWidget *parent) :
     QDialog(parent),
@@ -31,30 +35,30 @@ void signUp::on_pushButton_clicked()
     QString firstname=ui->lineEdit_fname->text();
     QString lastname=ui->lineEdit_lname->text();
 
-    QNetworkAccessManager* manager=new QNetworkAccessManager();
-    QNetworkRequest request;
-    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/signup?username="+username1+"&password="+password1+"&firstname="+firstname+"&lastname="+lastname));
 
-    QNetworkReply * reply=manager->get(request);
+    request r;
 
 
-    while(!reply->isFinished()){
-        QCoreApplication::processEvents();
-    }
+
+    QString message=r.signUpRequest(username1,password1,firstname,lastname).value("message").toString();
+    QString code=r.signUpRequest(username1,password1,firstname,lastname).value("code").toString();
 
 
-    if(reply->error()==QNetworkReply::NoError){
+   QMessageBox::information(this,code,message);
 
-        QByteArray data=reply->readAll();
-        QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
 
-        QJsonObject jsonobj=jsonDoc.object();
-        QString f=jsonobj.value("message").toString();
 
-        qDebug()<<f;
-        QMessageBox::information(this,"success",f);
+       // qDebug()<<message1;
+       // QMessageBox::information(this,"success",f);
 
 
 
     }
+
+
+void signUp::on_pushButton_3_clicked()
+{
+    login1 *l=new login1;
+    l->show();
 }
+

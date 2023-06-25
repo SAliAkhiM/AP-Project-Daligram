@@ -1,6 +1,7 @@
 #ifndef SIGNUP_H
 #define SIGNUP_H
 
+#include"request.h"
 #include <QDialog>
 
 namespace Ui {
@@ -17,6 +18,8 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::signUp *ui;
