@@ -1,9 +1,10 @@
 #include "signup.h"
 #include "ui_signup.h"
-#include"request.h"
-#include"login1.h"
+#include "request.h"
+#include "login1.h"
+#include "mainwindow.h"
 
-
+#include <QCheckBox>
 #include<QMessageBox>
 #include <QApplication>
 #include <QCoreApplication>
@@ -45,7 +46,23 @@ void signUp::on_pushButton_clicked()
 
 
    QMessageBox::information(this,code,message);
+   request req;
 
+
+   QJsonObject qobj=req.logInRequest(username1,password1);
+
+   QString message2=qobj.value("message").toString();
+   QString code2=qobj.value("code").toString();
+   QString token=qobj.value("token").toString();
+
+
+ //  QString message=req.logInRequest(username1,password1).value("message").toString();
+  // QString code=req.logInRequest(username1,password1).value("code").toString();
+  // QString token=req.logInRequest(username1,password1).value("token").toString();
+
+
+
+   qDebug()<<message2<<"***"<<code2<<"***"<<token<<"\n";
 
 
        // qDebug()<<message1;
@@ -60,5 +77,12 @@ void signUp::on_pushButton_3_clicked()
 {
     login1 *l=new login1;
     l->show();
+}
+
+
+void signUp::on_checkBox_toggled(bool checked)
+{
+    if (checked) ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
+    else ui->lineEdit_2->setEchoMode(QLineEdit::Password);
 }
 
