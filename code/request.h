@@ -17,6 +17,20 @@ public:
     request();
      QJsonObject signUpRequest(QString username,QString password,QString firstname,QString lastname);
      QJsonObject logInRequest(QString username,QString password);
+     QJsonObject joinGroup(QString token,QString groupname);
+     QJsonObject joinChannel(QString token,QString channelname);
+     QJsonObject getGroupListRequest(QString token);
+     QJsonObject getChannelListRequest(QString token);
+     QJsonObject getUserListRequest(QString token);
+     QJsonObject sendMessageUser(QString token,QString dst,QString body,QString sendTo);
+     QJsonObject getUserChats(QString token,QString dst);
+     //QJsonObject getUserChats(QString token,QString dst,QString date);
+     QJsonObject getGroupChats(QString token,QString dst);
+     //QJsonObject getGroupChats(QString token,QString dst,QString date);
+     QJsonObject getChannelChats(QString token,QString dst);
+     //QJsonObject getChannelChats(QString token,QString dst,QString date);
+
+
     // QJsonObject logInRequest(QString username,QString password);
 
 

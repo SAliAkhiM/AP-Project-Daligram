@@ -1,9 +1,11 @@
 #include "signup.h"
 #include "ui_signup.h"
 #include"request.h"
+#include"file.h"
 #include"login1.h"
 
-
+#include<fstream>
+#include<QDir>
 #include<QMessageBox>
 #include <QApplication>
 #include <QCoreApplication>
@@ -60,5 +62,43 @@ void signUp::on_pushButton_3_clicked()
 {
     login1 *l=new login1;
     l->show();
+
+}
+
+
+void signUp::on_pushButton_4_clicked()
+{
+    request r;
+
+
+    file f;
+   // f.saveGroupList(r.getGroupListRequest("705e436fad02cd677ce0e21d59319533"));
+   // f.saveChannelList(r.getChannelListRequest("705e436fad02cd677ce0e21d59319533"));
+   // f.saveUserList(r.getUserListRequest("705e436fad02cd677ce0e21d59319533"));
+
+    f.saveChannelChats(r.getChannelChats("705e436fad02cd677ce0e21d59319533","lab"));
+
+
+    //r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","hello?","channel");
+   // _sleep(3000);
+   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","how?","channel");
+   // _sleep(3000);
+   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","are?","channel");
+   // _sleep(3000);
+   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","you?","channel");
+
+   // std::ofstream file1;
+
+   // file1.open("D:/file practice/GroupList.txt");
+
+
+    //int groupNum=f.getNum(r.getGroupListRequest("705e436fad02cd677ce0e21d59319533").value("message").toString(),"group");
+
+
+  //  QString groupNum=r.getGroupListRequest("705e436fad02cd677ce0e21d59319533").value("message").toString();
+
+    //qDebug()<<message1;
+
+
 }
 
