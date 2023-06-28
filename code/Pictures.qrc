@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>background.png</file>
         <file>255999.jpg</file>
+        <file>hide.png</file>
+        <file>show.png</file>
     </qresource>
 </RCC>

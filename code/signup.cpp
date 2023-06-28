@@ -3,7 +3,7 @@
 #include"request.h"
 #include"login1.h"
 
-
+#include <QLineEdit>
 #include<QMessageBox>
 #include <QApplication>
 #include <QCoreApplication>
@@ -60,5 +60,12 @@ void signUp::on_pushButton_3_clicked()
 {
     login1 *l=new login1;
     l->show();
+}
+
+
+void signUp::on_checkBox_toggled(bool checked)
+{
+    if (checked) ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
+       else ui->lineEdit_2->setEchoMode(QLineEdit::Password);
 }
 
