@@ -18,6 +18,8 @@ public:
 private slots:
     void on_logIn_pushButton_clicked();
 
+    void on_checkBox_toggled(bool checked);
+
 private:
     Ui::login1 *ui;
 };

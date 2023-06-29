@@ -23,6 +23,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_toolButton_5_toggled(bool checked);
+
 private:
     Ui::signUp *ui;
 };

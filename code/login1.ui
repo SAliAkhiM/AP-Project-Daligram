@@ -13,58 +13,63 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>280</y>
-     <width>271</width>
-     <height>71</height>
+     <x>233</x>
+     <y>190</y>
+     <width>221</width>
+     <height>131</height>
     </rect>
    </property>
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>user name :</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>password :</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QLineEdit" name="username_login">
+      <property name="placeholderText">
+       <string> User Name</string>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLineEdit" name="username_login"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="password_login"/>
-      </item>
-     </layout>
+    <item row="1" column="1">
+     <widget class="QCheckBox" name="checkBox">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/new/prefix1/hide.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="password_login">
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+      <property name="placeholderText">
+       <string> Password</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QPushButton" name="logIn_pushButton">
+      <property name="whatsThis">
+       <string/>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/new/prefix1/lovepik-red-button-png-image_401250624_wh1200.png);</string>
+      </property>
+      <property name="text">
+       <string>login</string>
+      </property>
+     </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="logIn_pushButton">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>370</y>
-     <width>181</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>login</string>
-   </property>
   </widget>
  </widget>
  <resources/>

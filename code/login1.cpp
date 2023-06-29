@@ -41,3 +41,10 @@ void login1::on_logIn_pushButton_clicked()
     qDebug()<<message<<"***"<<code<<"***"<<token<<"\n";
 }
 
+
+void login1::on_checkBox_toggled(bool checked){
+
+        if (checked) ui->password_login->setEchoMode(QLineEdit::Normal);
+        else ui->password_login->setEchoMode(QLineEdit::Password);
+}
+
