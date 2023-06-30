@@ -1,7 +1,10 @@
 #ifndef FILE_H
 #define FILE_H
 #include <QJsonObject>
+#include<vector>
 #include"qstring.h"
+#include"message.h"
+using namespace std;
 
 class file
 {
@@ -15,6 +18,11 @@ public:
  void saveUserChats(QJsonObject jsonobj);
  void saveGroupChats(QJsonObject jsonobj);
  void saveChannelChats(QJsonObject jsonobj);
+ vector<QString> readUserList();
+ vector<QString> readGroupList();
+ vector<QString> readChannelList();
+ vector<messageClass> readMessages(QString dst2);
+
 
 };
 

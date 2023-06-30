@@ -1,5 +1,6 @@
 #include "file.h"
 #include"request.h"
+#include"message.h"
 #include<fstream>
 #include <iostream>
 #include<QDir>
@@ -151,7 +152,7 @@ void file::saveUserChats(QJsonObject jsonobj){
     if(file1.is_open()){
     for(int i=0;i<chatNum;i++){
         jsonobj1 = jsonobj.value("block "+QString::number(i)).toObject();
-        file1<<jsonobj1.value("body").toString().toStdString()<<" "<<jsonobj1.value("src").toString().toStdString()<<" "<<jsonobj1.value("dst").toString().toStdString()<<" "<<jsonobj1.value("date").toString().toStdString()<<"\n";
+        file1<<jsonobj1.value("body").toString().toStdString()<<"\n"<<jsonobj1.value("src").toString().toStdString()<<"\n"<<jsonobj1.value("dst").toString().toStdString()<<"\n"<<jsonobj1.value("date").toString().toStdString()<<"\n";
     }
 
     file1.close();
@@ -210,5 +211,137 @@ void file::saveChannelChats(QJsonObject jsonobj){
 }
     else
         throw "failed to open the file";
+
+}
+
+vector<QString> file::readUserList(){
+
+    vector<QString> userlist;
+    std::string user;
+    QString user1;
+
+    std::ifstream file1;
+    QString path=QDir::currentPath()+"/Users/UserList.txt";
+    file1.open(path.toStdString());
+
+
+    if(file1.is_open()){
+
+
+        file1>>user;
+        user1=QString::fromStdString(user);
+    while(!file1.eof()){
+        userlist.push_back(user1);
+        file1>>user;
+        user1=QString::fromStdString(user);
+    }
+
+    file1.close();
+    return userlist;
+}
+    else
+        throw "failed to open the file";
+}
+
+vector<QString> file::readGroupList(){
+
+    vector<QString> grouplist;
+    std::string user;
+    QString user1;
+
+    std::ifstream file1;
+    QString path=QDir::currentPath()+"/Groups/GroupList.txt";
+    file1.open(path.toStdString());
+
+
+    if(file1.is_open()){
+
+
+        file1>>user;
+        user1=QString::fromStdString(user);
+    while(!file1.eof()){
+        grouplist.push_back(user1);
+        file1>>user;
+        user1=QString::fromStdString(user);
+    }
+
+    file1.close();
+    return grouplist;
+}
+    else
+        throw "failed to open the file";
+}
+
+vector<QString> file::readChannelList(){
+
+    vector<QString> channellist;
+    std::string user;
+    QString user1;
+
+    std::ifstream file1;
+    QString path=QDir::currentPath()+"/Channels/ChannelList.txt";
+    file1.open(path.toStdString());
+
+
+    if(file1.is_open()){
+
+
+        file1>>user;
+        user1=QString::fromStdString(user);
+    while(!file1.eof()){
+        channellist.push_back(user1);
+        file1>>user;
+        user1=QString::fromStdString(user);
+    }
+
+    file1.close();
+    return channellist;
+}
+    else
+        throw "failed to open the file";
+}
+
+vector<messageClass> file::readMessages(QString dst2){
+
+    messageClass msg;
+
+    vector<messageClass> messages;
+    std::string body;
+    std::string src;
+    std::string dst;
+    std::string date;
+    std::string time;
+    QString body1;
+    QString src1;
+    QString dst1;
+    QString date1;
+    QString time1;
+
+
+
+    std::ifstream file1;
+    QString path=QDir::currentPath()+"/Users/"+dst2+".txt";
+    file1.open(path.toStdString());
+
+    if(file1.is_open()){
+
+        std::getline(file1,body);std::getline(file1,src);std::getline(file1,dst);std::getline(file1,date);
+        body1=QString::fromStdString(body);src1=QString::fromStdString(src);dst1=QString::fromStdString(dst);date1=QString::fromStdString(date);
+        msg.setBody(body1);msg.setSrc(src1);msg.setDst(dst1);msg.setDate(date1);msg.setTime("00");
+
+    while(!file1.eof()){
+
+        messages.push_back(msg);
+        std::getline(file1,body);std::getline(file1,src);std::getline(file1,dst);std::getline(file1,date);
+        body1=QString::fromStdString(body);src1=QString::fromStdString(src);dst1=QString::fromStdString(dst);date1=QString::fromStdString(date);
+        msg.setBody(body1);msg.setSrc(src1);msg.setDst(dst1);msg.setDate(date1);msg.setTime("00");
+    }
+
+    file1.close();
+    return messages;
+}
+    else{
+        throw "failed to open the file";
+}
 
 }

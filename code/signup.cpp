@@ -3,6 +3,7 @@
 #include"request.h"
 #include"file.h"
 #include"login1.h"
+#include"message.h"
 
 #include <QLineEdit>
 #include <QPushButton>>
@@ -88,36 +89,18 @@ void signUp::on_pushButton_3_clicked()
 
 void signUp::on_pushButton_4_clicked()
 {
-    request r;
+   // request r;
 
 
     file f;
-   // f.saveGroupList(r.getGroupListRequest("705e436fad02cd677ce0e21d59319533"));
-   // f.saveChannelList(r.getChannelListRequest("705e436fad02cd677ce0e21d59319533"));
-   // f.saveUserList(r.getUserListRequest("705e436fad02cd677ce0e21d59319533"));
+    request r;
+    vector<messageClass> v;
 
-    f.saveChannelChats(r.getChannelChats("705e436fad02cd677ce0e21d59319533","lab"));
-
-
-    //r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","hello?","channel");
-   // _sleep(3000);
-   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","how?","channel");
-   // _sleep(3000);
-   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","are?","channel");
-   // _sleep(3000);
-   // r.sendMessageUser("705e436fad02cd677ce0e21d59319533","lab","you?","channel");
-
-   // std::ofstream file1;
-
-   // file1.open("D:/file practice/GroupList.txt");
+    r.sendMessageUser("4c442565bbdddcb1786f61b0fb909194","hafez","hello mr.hafez","user");
+    f.saveUserChats(r.getUserListRequest("4c442565bbdddcb1786f61b0fb909194"));
+    v=f.readMessages("hafez");
 
 
-    //int groupNum=f.getNum(r.getGroupListRequest("705e436fad02cd677ce0e21d59319533").value("message").toString(),"group");
-
-
-  //  QString groupNum=r.getGroupListRequest("705e436fad02cd677ce0e21d59319533").value("message").toString();
-
-    //qDebug()<<message1;
 
 
 }
