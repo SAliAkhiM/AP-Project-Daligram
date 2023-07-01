@@ -26,50 +26,6 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="All">
-     <attribute name="title">
-      <string>All</string>
-     </attribute>
-     <widget class="QListWidget" name="AllList">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>67</y>
-        <width>351</width>
-        <height>541</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="UsersSearch_4">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>37</y>
-        <width>351</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>search</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="UsersSearch_3">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>351</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string> Search</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="Users">
      <attribute name="title">
       <string>Users</string>
@@ -165,7 +121,7 @@
         <x>9</x>
         <y>67</y>
         <width>351</width>
-        <height>271</height>
+        <height>521</height>
        </rect>
       </property>
      </widget>
@@ -179,19 +135,6 @@
        </rect>
       </property>
       <property name="placeholderText">
-       <string> Search</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>37</y>
-        <width>351</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
        <string> Search</string>
       </property>
      </widget>
@@ -265,36 +208,19 @@
 border-top-color: rgb(0, 0, 0);</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="sendButton1">
      <property name="geometry">
       <rect>
-       <x>580</x>
-       <y>540</y>
-       <width>41</width>
-       <height>51</height>
+       <x>500</x>
+       <y>460</y>
+       <width>83</width>
+       <height>29</height>
       </rect>
      </property>
      <property name="text">
-      <string>send</string>
+      <string>PushButton</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>10</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -303,7 +229,7 @@ border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);</stri
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

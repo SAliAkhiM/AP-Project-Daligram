@@ -1,7 +1,9 @@
 #include "login1.h"
 #include "ui_login1.h"
 #include <QJsonObject>
+#include"file.h"
 #include"request.h"
+#include"user.h"
 
 login1::login1(QWidget *parent) :
     QDialog(parent),
@@ -17,13 +19,12 @@ login1::~login1()
 
 void login1::on_logIn_pushButton_clicked()
 {
-
+    file f;
 
     QString username1=ui->username_login->text();
     QString password1=ui->password_login->text();
 
     request req;
-
 
     QJsonObject qobj=req.logInRequest(username1,password1);
 
@@ -31,14 +32,8 @@ void login1::on_logIn_pushButton_clicked()
     QString code=qobj.value("code").toString();
     QString token=qobj.value("token").toString();
 
+    f.saveProfile1(username1,password1,token);
 
-  //  QString message=req.logInRequest(username1,password1).value("message").toString();
-   // QString code=req.logInRequest(username1,password1).value("code").toString();
-   // QString token=req.logInRequest(username1,password1).value("token").toString();
-
-
-
-    qDebug()<<message<<"***"<<code<<"***"<<token<<"\n";
 }
 
 

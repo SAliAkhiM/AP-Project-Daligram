@@ -24,7 +24,7 @@ public:
      QJsonObject getGroupListRequest(QString token);
      QJsonObject getChannelListRequest(QString token);
      QJsonObject getUserListRequest(QString token);
-     QJsonObject sendMessageUser(QString token,QString dst,QString body,QString sendTo);
+     QJsonObject sendMessage(QString token,QString dst,QString body,QString sendTo);
      QJsonObject getUserChats(QString token,QString dst);
      //QJsonObject getUserChats(QString token,QString dst,QString date);
      QJsonObject getGroupChats(QString token,QString dst);

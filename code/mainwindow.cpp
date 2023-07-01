@@ -8,12 +8,54 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
+{ui->setupUi(this);
+
+    file f;
+    user user1=f.readProfile();
+    UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
+    startGroupList();
+    startChannelList();
     startUserList();
+
     ui->nameFrame->setStyleSheet("background-color: red;");
 }
+void MainWindow::setUserToken(QString t){
+    userToken=t;
+}
+void MainWindow::setUserUserName(QString u){
+    userUserName=u;
+}
+void MainWindow::setUserPassword(QString p){
+    userPassword=p;
+}
+void MainWindow::setUserIsLogin(int i){
+    UserIsLogin=i;
+}
+void MainWindow::setCurDst(QString c){
+    curdst=c;
+}
+void MainWindow::setDstType(QString d){
+    dstType=d;
+}
+QString MainWindow::getUserToken(){
+    return userToken;
+}
+QString MainWindow::getUserUserName(){
+    return userUserName;
+}
+QString MainWindow::getUserPassword(){
+    return userPassword;
+}
+QString MainWindow::getCurDst(){
+    return curdst;
+}
+QString MainWindow::getDstType(){
+    return dstType;
+}
 
+int  MainWindow::getUserIsLogin(){
+    return UserIsLogin;
+}
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -67,8 +109,6 @@ void MainWindow::startGroupList(){
   emit(item);
 
 }
-
-
 void MainWindow::startChannelList(){
 
     file f;
@@ -99,6 +139,7 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
    request r;
    file f1;
 
+
     ui->nameLabel->setText(item->text());
 
     ui->messageList->clear();
@@ -107,8 +148,20 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
     vector<messageClass> messages;
 
 
+    if(ui->tabWidget->currentIndex()==0){
+        messages=f.readUserMessages(userToken,item->text());
+        setDstType("user");
+    }
+    else if(ui->tabWidget->currentIndex()==1){
+        messages=f.readGroupMessages(userToken,item->text());
+        setDstType("group");
+    }
+    else if(ui->tabWidget->currentIndex()==2){
+        messages=f.readChannelMessages(userToken,item->text());
+        setDstType("channel");
+    }
 
-    messages=f.readMessages(item->text());
+
 
 
     QListWidgetItem *messageItem;
@@ -117,13 +170,17 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
    for(int i=0;i<messages.size();i++){
      messageItem = new QListWidgetItem();
      messageItem->setText(messages[i].getBody());
-     messageItem->setSizeHint(QSize(1,60));
+     messageItem->setSizeHint(QSize());
      //item->setIcon(QIcon(":/new/prefix1/hide.png"));
      messageItem->setToolTip(messages[i].getDate());
      //item->setWhatsThis("Item what's this");
      ui->messageList->addItem(messageItem);
    }
 
+  setCurDst(item->text());
+
+
+  //qDebug()<<getDstType();
 
 }
 
@@ -131,15 +188,13 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
 
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_sendButton1_clicked()
 {
+   file f;
+   request req;
+   req.sendMessage(getUserToken(),getCurDst(),ui->messageTextEdit->toPlainText(),getDstType());
 
-}
 
-
-void MainWindow::on_pushButton_2_clicked()
-{
- //   ui->listWidget->addItem("hello");
 
 }
 

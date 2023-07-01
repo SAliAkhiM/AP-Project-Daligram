@@ -293,7 +293,7 @@ request::request()
 
  }
 
- QJsonObject request::sendMessageUser(QString token,QString dst,QString body,QString sendTo){
+ QJsonObject request::sendMessage(QString token,QString dst,QString body,QString sendTo){
 
      QNetworkAccessManager* manager=new QNetworkAccessManager();
      QNetworkRequest request;
