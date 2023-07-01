@@ -14,11 +14,17 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void start();
+    void startUserList();
+    void startGroupList();
+    void startChannelList();
 
 private slots:
     void onItemClicked (QListWidgetItem* item);
-    void on_pushButton_6_clicked();
+
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

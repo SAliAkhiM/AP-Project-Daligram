@@ -20,64 +20,188 @@
       <x>0</x>
       <y>0</y>
       <width>371</width>
-      <height>621</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="All">
      <attribute name="title">
       <string>All</string>
      </attribute>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="2">
-       <widget class="QListWidget" name="listWidget"/>
-      </item>
-     </layout>
+     <widget class="QListWidget" name="AllList">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>67</y>
+        <width>351</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="UsersSearch_4">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>37</y>
+        <width>351</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="UsersSearch_3">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>351</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string> Search</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Users">
      <attribute name="title">
       <string>Users</string>
      </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="text">
-         <string>search</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>search</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QListWidget" name="usersList"/>
-      </item>
-     </layout>
+     <widget class="QLineEdit" name="UsersSearch">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>351</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string> Search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="UsersSearch_2">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>37</y>
+        <width>351</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="usersList">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>67</y>
+        <width>351</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Groups">
      <attribute name="title">
       <string>Groups</string>
      </attribute>
-     <layout class="QGridLayout" name="gridLayout_3"/>
+     <widget class="QListWidget" name="GroupList">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>67</y>
+        <width>351</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>351</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string> Search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>37</y>
+        <width>351</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> Search</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Channels">
      <attribute name="title">
       <string>Channels</string>
      </attribute>
-     <layout class="QGridLayout" name="gridLayout_4"/>
+     <widget class="QListWidget" name="ChannelList">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>67</y>
+        <width>351</width>
+        <height>271</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>351</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string> Search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>37</y>
+        <width>351</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> Search</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>30</y>
+      <y>40</y>
       <width>621</width>
       <height>591</height>
      </rect>
@@ -92,7 +216,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>-1</y>
+       <y>20</y>
        <width>621</width>
        <height>51</height>
       </rect>
@@ -121,9 +245,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>50</y>
+       <y>70</y>
        <width>621</width>
-       <height>491</height>
+       <height>471</height>
       </rect>
      </property>
     </widget>
@@ -155,6 +279,23 @@ border-top-color: rgb(0, 0, 0);</string>
      </property>
     </widget>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>10</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -162,7 +303,7 @@ border-top-color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

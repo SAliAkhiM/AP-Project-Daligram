@@ -14,14 +14,13 @@ file::file()
   int folderBuildCheck2=buildFolders("Groups");
   int folderBuildCheck3=buildFolders("Channels");
 
-  if(folderBuildCheck1==0||folderBuildCheck2==0||folderBuildCheck3==0)
-      throw "error building folders";
+  //if(folderBuildCheck1==0||folderBuildCheck2==0||folderBuildCheck3==0)
+     // throw "error building folders";
 
 }
 
 int file:: buildFolders(QString folderName){
 
-    //QString folder_path = "path/to/folder";
 
   QString folder_path =  QDir::currentPath()+"/"+folderName;
 
@@ -79,8 +78,8 @@ void file:: saveGroupList(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+   // else
+     //   throw "failed to open the file";
 
 
 
@@ -106,8 +105,8 @@ void file:: saveChannelList(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+ //   else
+        //throw "failed to open the file";
 
 
 }
@@ -131,8 +130,8 @@ void file:: saveUserList(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+  //  else
+    //    throw "failed to open the file";
 
 }
 
@@ -157,8 +156,8 @@ void file::saveUserChats(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+   // else
+   //     throw "failed to open the file";
 
 }
 
@@ -183,8 +182,8 @@ void file::saveGroupChats(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+   // else
+     //   throw "failed to open the file";
 
 }
 
@@ -209,8 +208,8 @@ void file::saveChannelChats(QJsonObject jsonobj){
 
     file1.close();
 }
-    else
-        throw "failed to open the file";
+  //  else
+    //    throw "failed to open the file";
 
 }
 
@@ -239,8 +238,8 @@ vector<QString> file::readUserList(){
     file1.close();
     return userlist;
 }
-    else
-        throw "failed to open the file";
+//    else
+//        throw "failed to open the file";
 }
 
 vector<QString> file::readGroupList(){
@@ -268,8 +267,8 @@ vector<QString> file::readGroupList(){
     file1.close();
     return grouplist;
 }
-    else
-        throw "failed to open the file";
+ //   else
+  //      throw "failed to open the file";
 }
 
 vector<QString> file::readChannelList(){
@@ -297,8 +296,8 @@ vector<QString> file::readChannelList(){
     file1.close();
     return channellist;
 }
-    else
-        throw "failed to open the file";
+//    else
+ //       throw "failed to open the file";
 }
 
 vector<messageClass> file::readMessages(QString dst2){
@@ -340,8 +339,8 @@ vector<messageClass> file::readMessages(QString dst2){
     file1.close();
     return messages;
 }
-    else{
-        throw "failed to open the file";
-}
+  //  else{
+  //      throw "failed to open the file";
+//}
 
 }

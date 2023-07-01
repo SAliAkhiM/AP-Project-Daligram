@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    start();
+    startUserList();
     ui->nameFrame->setStyleSheet("background-color: red;");
 }
 
@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::start(){
+void MainWindow::startUserList(){
 
     file f;
 
@@ -40,6 +40,56 @@ void MainWindow::start(){
     }
 
   connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+  emit(item);
+
+}
+void MainWindow::startGroupList(){
+
+    file f;
+
+    vector<QString> GroupList=f.readGroupList();
+
+    QListWidgetItem *item;
+
+
+
+    for(int i=0;i<GroupList.size();i++){
+      item = new QListWidgetItem();
+      item->setText(GroupList[i]);
+      item->setSizeHint(QSize(1,50));
+      //item->setIcon(QIcon(":/new/prefix1/hide.png"));
+      //item->setToolTip("Item tooltip");
+      //item->setWhatsThis("Item what's this");
+      ui->GroupList->addItem(item);
+    }
+
+  connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+  emit(item);
+
+}
+
+
+void MainWindow::startChannelList(){
+
+    file f;
+
+    vector<QString> ChannelList=f.readChannelList();
+
+    QListWidgetItem *item;
+
+
+
+    for(int i=0;i<ChannelList.size();i++){
+      item = new QListWidgetItem();
+      item->setText(ChannelList[i]);
+      item->setSizeHint(QSize(1,50));
+      //item->setIcon(QIcon(":/new/prefix1/hide.png"));
+      //item->setToolTip("Item tooltip");
+      //item->setWhatsThis("Item what's this");
+      ui->ChannelList->addItem(item);
+    }
+
+  connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
   emit(item);
 
 }
@@ -80,8 +130,16 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
 
 
-void MainWindow::on_pushButton_6_clicked()
+
+void MainWindow::on_pushButton_3_clicked()
 {
-     ui->listWidget->addItem("hello");
+
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+ //   ui->listWidget->addItem("hello");
+
 }
 

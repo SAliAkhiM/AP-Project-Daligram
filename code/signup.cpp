@@ -6,7 +6,7 @@
 #include"message.h"
 
 #include <QLineEdit>
-#include <QPushButton>>
+#include <QPushButton>
 #include<fstream>
 #include<QDir>
 #include<QMessageBox>
@@ -107,7 +107,8 @@ void signUp::on_pushButton_4_clicked()
 
 
 
-void signUp::on_toolButton_5_toggled(bool checked)
+
+void signUp::on_checkBox_toggled(bool checked)
 {
     if (checked)   ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
     else ui->lineEdit_2->setEchoMode(QLineEdit::Password);
