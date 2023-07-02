@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include"file.h"
-#include"message.h"
-#include"request.h"
-#include<QMessageBox>
+//#include"file.h"
+//#include"message.h"
+//#include"request.h"
+//#include<QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -184,17 +184,20 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
 }
 
-
-
-
-
 void MainWindow::on_sendButton1_clicked()
 {
    file f;
    request req;
    req.sendMessage(getUserToken(),getCurDst(),ui->messageTextEdit->toPlainText(),getDstType());
 
-
+    QJsonObject qobj1=req.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","star");
+    f.saveUserChats(qobj1);
 
 }
 
+
+//void changeSlot(QString msg){
+//    if(QString::compare(msg,"userListChanged")==0){
+//      //  startUserList();
+//    }
+//}

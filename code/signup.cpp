@@ -84,15 +84,19 @@ void signUp::on_pushButton_4_clicked()
     request r;
     vector<messageClass> v;
 
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","testaccount","test1","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","testaccount","test2","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","testaccount","test3","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","testaccount","test4","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","testaccount","test5","user");
+//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","salam","user");
+//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test2","user");
+//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test3","user");
+//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test4","user");
+//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","bye","user");
 
 
-   f.saveUserList(r.getUserListRequest("d69f3713c9f0c11b812db3bfe57fcd29"));
-   f.saveUserChats(r.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","testaccount"));
+
+    QJsonObject qobj=r.getUserListRequest("d69f3713c9f0c11b812db3bfe57fcd29");
+    QJsonObject qobj1=r.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","kkk");
+
+   f.saveUserList(qobj);
+   f.saveUserChats(qobj1);
 
     //f.saveUserList(r.getUserListRequest("033d53cbd1e4ab7e6654d684f6eeab6a"));
 

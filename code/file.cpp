@@ -195,6 +195,8 @@ void file::saveUserChats(QJsonObject jsonobj){
     file f;
     int chatNum=f.getNum(jsonobj.value("message").toString(),"chatlist");
 
+    file1<<chatNum<<"\n";
+
   QJsonObject jsonobj1;
 
     if(file1.is_open()){
@@ -220,6 +222,7 @@ void file::saveGroupChats(QJsonObject jsonobj){
     request req;
     file f;
     int chatNum=f.getNum(jsonobj.value("message").toString(),"chatlist");
+    file1<<chatNum<<"\n";
 
   QJsonObject jsonobj1;
 
@@ -246,6 +249,7 @@ void file::saveChannelChats(QJsonObject jsonobj){
     request req;
     file f;
     int chatNum=f.getNum(jsonobj.value("message").toString(),"chatlist");
+    file1<<chatNum<<"\n";
 
   QJsonObject jsonobj1;
 
@@ -372,7 +376,7 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     file f;
     request req;
     QJsonObject jsonobj=req.getUserChats(token,dst2);///////////////////////getChannelList
-    int messageNum=f.getNum(jsonobj.value("message").toString(),"message");
+
 
 
 
@@ -380,12 +384,14 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     QString path=QDir::currentPath()+"/Users/"+dst2+".txt";////////////////////Channels+dst2
     file1.open(path.toStdString());
 
-    qDebug()<<messageNum;
+    int chatNum;
+    file1>>chatNum;
 
     if(file1.is_open()){
    // while(!file1.eof()){
 
-        for(int i=0;i<messageNum;i++){
+        qDebug()<<chatNum<<"++++++++++++";
+        for(int i=0;i<chatNum;i++){
 
          body1.clear();
 
@@ -439,7 +445,6 @@ vector<messageClass> file::readChannelMessages(QString token,QString dst2){
     file f;
     request req;
     QJsonObject jsonobj=req.getChannelChats(token,dst2);
-    int messageNum=f.getNum(jsonobj.value("message").toString(),"message");
 
 
 
@@ -447,10 +452,14 @@ vector<messageClass> file::readChannelMessages(QString token,QString dst2){
     QString path=QDir::currentPath()+"/Channels/"+dst2+".txt";
     file1.open(path.toStdString());
 
+    int chatNum;
+    file1>>chatNum;
+
+
     if(file1.is_open()){
    // while(!file1.eof()){
 
-        for(int i=0;i<messageNum;i++){
+        for(int i=0;i<chatNum;i++){
 
          body1.clear();
 
@@ -504,7 +513,7 @@ vector<messageClass> file::readGroupMessages(QString token,QString dst2){
     file f;
     request req;
     QJsonObject jsonobj=req.getGroupChats(token,dst2);
-    int messageNum=f.getNum(jsonobj.value("message").toString(),"message");
+
 
 
 
@@ -512,10 +521,13 @@ vector<messageClass> file::readGroupMessages(QString token,QString dst2){
     QString path=QDir::currentPath()+"/Groups/"+dst2+".txt";
     file1.open(path.toStdString());
 
+    int chatNum;
+    file1>>chatNum;
+
     if(file1.is_open()){
    // while(!file1.eof()){
 
-        for(int i=0;i<messageNum;i++){
+        for(int i=0;i<chatNum;i++){
 
          body1.clear();
 

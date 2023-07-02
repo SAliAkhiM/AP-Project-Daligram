@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include<QString>
 #include<fstream>
+#include"file.h"
+#include"message.h"
+#include"request.h"
+#include<QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,7 +47,7 @@ public:
 
 private slots:
     void onItemClicked (QListWidgetItem* item);
-
+    void changeSlot(QString);
 
 
 

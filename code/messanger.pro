@@ -17,6 +17,7 @@ SOURCES += \
     message.cpp \
     request.cpp \
     signup.cpp \
+    threadclass1.cpp \
     user.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     message.h \
     request.h \
     signup.h \
+    threadclass1.h \
     user.h
 
 FORMS += \
