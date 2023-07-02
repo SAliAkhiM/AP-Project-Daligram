@@ -17,7 +17,7 @@ SOURCES += \
     message.cpp \
     request.cpp \
     signup.cpp \
-    threadclass1.cpp \
+    thread1.cpp \
     user.cpp
 
 HEADERS += \
@@ -27,13 +27,14 @@ HEADERS += \
     message.h \
     request.h \
     signup.h \
-    threadclass1.h \
+    thread1.h \
     user.h
 
 FORMS += \
     login1.ui \
     mainwindow.ui \
-    signup.ui
+    signup.ui \
+    thread1.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include"thread1.h"
 //#include"file.h"
 //#include"message.h"
 //#include"request.h"
@@ -63,6 +64,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::startUserList(){
 
+    ui->usersList->clear();
+
     file f;
 
     vector<QString> userlist=f.readUserList();
@@ -85,6 +88,9 @@ void MainWindow::startUserList(){
   emit(item);
 
 }
+
+
+
 void MainWindow::startGroupList(){
 
     file f;
@@ -192,12 +198,56 @@ void MainWindow::on_sendButton1_clicked()
 
     QJsonObject qobj1=req.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","star");
     f.saveUserChats(qobj1);
+    startUserList();
 
 }
 
 
-//void changeSlot(QString msg){
-//    if(QString::compare(msg,"userListChanged")==0){
-//      //  startUserList();
-//    }
-//}
+void MainWindow::listChangeSlot(){
+
+    qDebug()<<"list changed";
+       startUserList();
+       startChannelList();
+       startUserList();
+
+}
+
+
+void MainWindow::userMsgChangeSlot(QString user){
+
+    qDebug()<<"message changed";
+
+    QListWidgetItem* item ;
+   for(int i=0;i<ui->usersList->count();i++){
+       item= ui->usersList->item(i);
+       if(item->text()==user){
+           delete item;
+           ui->usersList->addItem(item);
+           break;
+       }
+   }
+}
+
+
+
+void MainWindow::groupMsgChangeSlot(QString)
+{
+
+}
+
+
+
+void MainWindow::channelMsgChangeSlot(QString user)
+{
+
+
+
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    thread1 t;
+    t.ListOperation("d69f3713c9f0c11b812db3bfe57fcd29");
+    qDebug()<<"finished";
+}
+

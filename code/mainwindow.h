@@ -46,13 +46,20 @@ public:
 
 
 private slots:
+    void listChangeSlot();
+    void userMsgChangeSlot(QString);
+    void groupMsgChangeSlot(QString);
+    void channelMsgChangeSlot(QString);
+
     void onItemClicked (QListWidgetItem* item);
-    void changeSlot(QString);
+
 
 
 
 
     void on_sendButton1_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

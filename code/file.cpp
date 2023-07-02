@@ -390,7 +390,7 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     if(file1.is_open()){
    // while(!file1.eof()){
 
-        qDebug()<<chatNum<<"++++++++++++";
+        //qDebug()<<chatNum<<"++++++++++++";
         for(int i=0;i<chatNum;i++){
 
          body1.clear();

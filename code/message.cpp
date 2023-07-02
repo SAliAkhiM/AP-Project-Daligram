@@ -51,6 +51,23 @@ QString messageClass::getTime ()
     return time;
 }
 
+bool messageClass::operator!=(const messageClass& other) const{
+    if((body!=other.body)||src!=other.src||dst!=other.dst||date!=other.date){
+        return 1;
+    }
+    else return 0;
+}
+
+bool messageClass::operator==(const messageClass& other) const{
+    if(body==other.body&&src==other.src&&dst==other.dst&&date==other.date){
+        return 1;
+    }
+    else return 0;
+}
+
+
+
+
 messageClass::~messageClass()
 {
 }

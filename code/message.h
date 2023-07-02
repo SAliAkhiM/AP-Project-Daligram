@@ -26,6 +26,9 @@ public:
     QString getDate ();
     QString getTime ();
 
+     bool operator!=(const messageClass& other) const;
+    bool operator==(const messageClass& other) const;
+
     ~messageClass();
 
 };
