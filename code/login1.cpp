@@ -33,6 +33,7 @@ void login1::on_logIn_pushButton_clicked()
     QString token=qobj.value("token").toString();
 
     f.saveProfile1(username1,password1,token);
+    qDebug()<<token;
 
 }
 

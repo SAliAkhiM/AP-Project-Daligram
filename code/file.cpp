@@ -187,7 +187,9 @@ void file:: saveUserList(QJsonObject jsonobj){
 void file::saveUserChats(QJsonObject jsonobj){
 
     std::ofstream file1;
-    QString path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("dst")).toString())+".txt";
+    QString path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("src")).toString())+".txt";//prob is here
+
+    //qDebug()<<path<<":::::::::::::::::::::::::::::";
 
     file1.open(path.toStdString());
 
@@ -386,10 +388,11 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     file1.open(path.toStdString());
 
     int chatNum;
-    file1>>chatNum;
+
 
     if(file1.is_open()){
-   // while(!file1.eof()){
+
+        file1>>chatNum;
 
         //qDebug()<<chatNum<<"++++++++++++";
         for(int i=0;i<chatNum;i++){
@@ -418,7 +421,8 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     }
 
     else{
-        throw "failed to open the file";
+        qDebug()<<"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+      //  throw "failed to open the file";
 }
 
 }
@@ -559,3 +563,10 @@ vector<messageClass> file::readGroupMessages(QString token,QString dst2){
 
 }
 
+
+//void file::buildFiles(QString token){
+
+
+//    vector<QString> vec;
+
+//}

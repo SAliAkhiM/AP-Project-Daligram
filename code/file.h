@@ -29,6 +29,7 @@ public:
  vector<messageClass> readUserMessages(QString token,QString dst2);
  vector<messageClass> readChannelMessages(QString token,QString dst2);
  vector<messageClass> readGroupMessages(QString token,QString dst2);
+// void buildFiles(QString token);
 
 
 };

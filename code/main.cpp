@@ -26,8 +26,12 @@ int main(int argc, char *argv[])
     w->show();
 
 
-    listUpdateThread* lu=new listUpdateThread("4792851ec99c09812ccf96403a36fe67",w);
-    userMsgThread* um=new userMsgThread("4792851ec99c09812ccf96403a36fe67",w);
+    file f;
+    request r;
+    user user1=f.readProfile();
+
+    listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
+    userMsgThread* um=new userMsgThread(user1.getToken(),w);
 
     lu->start();
     um->start();

@@ -9,7 +9,9 @@
 //#include"request.h"
 //#include<QMessageBox>
 
-
+QListWidgetItem *item;
+QListWidgetItem *item1;
+QListWidgetItem *item2;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,11 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
 
    // f.saveGroupList(r.getGroupListRequest(getUserToken()));
    // f.saveGroupChats(r.getGroupChats(getUserToken(),"hhh"));
-    userToken="4792851ec99c09812ccf96403a36fe67";
 
-    startGroupList();
-    startChannelList();
-    startUserList();
+
     QJsonObject jo=r.getUserListRequest(userToken);
     QJsonObject jo1=r.getGroupListRequest(userToken);
     QJsonObject jo2=r.getChannelListRequest(userToken);
@@ -35,23 +34,24 @@ MainWindow::MainWindow(QWidget *parent)
     f.saveGroupList(jo1);
     f.saveChannelList(jo2);
 
+    startGroupList();
+    startChannelList();
+    startUserList();
+
     qDebug()<<userToken<<"::::::::";
 
-// QTimer::singleShot(500, this, [=](){
 
-//        listUpdateThread* lu=new listUpdateThread(userToken,this);
-//        userMsgThread* um=new userMsgThread(userToken,this);
+    connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+    emit(item);
 
-//        lu->start();
-//       // um->start();
-
+    connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+    emit(item1);
 
 
-//        lu->wait();
-//       // um->wait();
+    connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+    emit(item2);
 
 
-// });
 
 
     ui->nameFrame->setStyleSheet("background-color: red;");
@@ -106,7 +106,7 @@ void MainWindow::startUserList(){
 
     vector<QString> userlist=f.readUserList();
 
-    QListWidgetItem *item;
+//   QListWidgetItem *item;
 
 
 std::reverse(userlist.begin(),userlist.end());
@@ -123,8 +123,8 @@ std::reverse(userlist.begin(),userlist.end());
       ui->usersList->addItem(item);
     }
 
-  connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
-  emit(item);
+//  connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+//  emit(item);
 
 }
 
@@ -136,7 +136,7 @@ ui->GroupList->clear();
 
     vector<QString> GroupList=f.readGroupList();
 
-    QListWidgetItem *item;
+
 
 std::reverse(GroupList.begin(),GroupList.end());
 
@@ -150,8 +150,8 @@ std::reverse(GroupList.begin(),GroupList.end());
       ui->GroupList->addItem(item);
     }
 
-  connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
-  emit(item);
+//  connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+//  emit(item);
 
 }
 void MainWindow::startChannelList(){
@@ -176,8 +176,8 @@ ui->ChannelList->clear();
       ui->ChannelList->addItem(item);
     }
 
-  connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
-  emit(item);
+//  connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
+//  emit(item);
 
 }
 
@@ -311,12 +311,13 @@ void MainWindow::userMsgChange(QString user){
     file f;
 
     vec=f.readUserList();
+    qDebug()<<"reading userlist to change order";
 
     auto iter = std::find(vec.begin(), vec.end(), user);
         if (iter != vec.begin()) {
             std::iter_swap(iter, vec.begin());
         }
-    qDebug()<<vec[0];
+
 
     ofstream file1;
     QString path=QDir::currentPath()+"/Users/UserList.txt";
@@ -325,6 +326,8 @@ void MainWindow::userMsgChange(QString user){
     for(int i=0;i<vec.size();i++){
         file1<<vec[i].toStdString()<<"\n";
     }
+
+    qDebug()<<"writing new userlist on file";
 
    file1.close();
 

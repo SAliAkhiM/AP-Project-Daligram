@@ -84,13 +84,6 @@ void signUp::on_pushButton_4_clicked()
     request r;
     vector<messageClass> v;
 
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","salam","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test2","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test3","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","test4","user");
-//    r.sendMessage("d69f3713c9f0c11b812db3bfe57fcd29","star","bye","user");
-
-
 
     QJsonObject qobj=r.getUserListRequest("d69f3713c9f0c11b812db3bfe57fcd29");
     QJsonObject qobj1=r.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","kkk");
@@ -98,21 +91,6 @@ void signUp::on_pushButton_4_clicked()
    f.saveUserList(qobj);
    f.saveUserChats(qobj1);
 
-    //f.saveUserList(r.getUserListRequest("033d53cbd1e4ab7e6654d684f6eeab6a"));
-
-
-   // f.saveUserChats(r.getUserChats("033d53cbd1e4ab7e6654d684f6eeab6a","hafez"));
-
-
-
-//    r.sendMessageUser("4c442565bbdddcb1786f61b0fb909194","hafez","hello mr.hafez","user");
-//    f.saveUserChats(r.getUserListRequest("4c442565bbdddcb1786f61b0fb909194"));
-//    v=f.readMessages("hafez");
-
-//    f.saveGroupList(r.getGroupListRequest("4c442565bbdddcb1786f61b0fb909194"));
-//    f.saveUserChats(r.getUserChats("4c442565bbdddcb1786f61b0fb909194","hafez"));
-//     f.saveUserChats(r.getUserChats("4c442565bbdddcb1786f61b0fb909194","molana"));
-//      f.saveUserChats(r.getUserChats("4c442565bbdddcb1786f61b0fb909194","bahar"));
 
 
 }
