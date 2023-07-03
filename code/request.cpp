@@ -298,12 +298,16 @@ request::request()
      QNetworkAccessManager* manager=new QNetworkAccessManager();
      QNetworkRequest request;
 
-     if(sendTo.compare("user")==0)
-     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessageuser?token="+token+"&dst="+dst+"&body="+body));
-     else if(sendTo.compare("group")==0)
-     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagegroup?token="+token+"&dst="+dst+"&body="+body));
-     else if(sendTo.compare("channel")==0)
-     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagechannel?token="+token+"&dst="+dst+"&body="+body));
+     // :|
+     //if(sendTo.compare("user")==0)
+     //request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessageuser?token="+token+"&dst="+dst+"&body="+body));
+     //else if(sendTo.compare("group")==0)
+     //request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagegroup?token="+token+"&dst="+dst+"&body="+body));
+     //else if(sendTo.compare("channel")==0)
+     //request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagechannel?token="+token+"&dst="+dst+"&body="+body));
+
+     // Easy bro! :
+     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessage"+sendTo+"?token="+token+"&dst="+dst+"&body="+body));
 
      QNetworkReply * reply=manager->get(request);
 

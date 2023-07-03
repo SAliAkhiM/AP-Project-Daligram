@@ -11,12 +11,15 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createjoinchannels.cpp \
+    createjoingroups.cpp \
     file.cpp \
     listupdatethread.cpp \
     login1.cpp \
     main.cpp \
     mainwindow.cpp \
     message.cpp \
+    newuserchats.cpp \
     request.cpp \
     signup.cpp \
     thread1.cpp \
@@ -24,11 +27,14 @@ SOURCES += \
     usermsgthread.cpp
 
 HEADERS += \
+    createjoinchannels.h \
+    createjoingroups.h \
     file.h \
     listupdatethread.h \
     login1.h \
     mainwindow.h \
     message.h \
+    newuserchats.h \
     request.h \
     signup.h \
     thread1.h \
@@ -36,8 +42,11 @@ HEADERS += \
     usermsgthread.h
 
 FORMS += \
+    createjoinchannels.ui \
+    createjoingroups.ui \
     login1.ui \
     mainwindow.ui \
+    newuserchats.ui \
     signup.ui \
     thread1.ui
 
