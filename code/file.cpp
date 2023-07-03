@@ -217,6 +217,7 @@ void file::saveGroupChats(QJsonObject jsonobj){
     std::ofstream file1;
     QString path=QDir::currentPath()+"/Groups/"+(((jsonobj.value("block 0").toObject()).value("dst")).toString())+".txt";
 
+  //  qDebug()<<path;
     file1.open(path.toStdString());
 
     request req;

@@ -5,6 +5,7 @@
 #include"qstring.h"
 #include"message.h"
 #include"user.h"
+
 using namespace std;
 
 class file

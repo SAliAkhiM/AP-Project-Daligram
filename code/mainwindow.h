@@ -8,6 +8,7 @@
 #include"message.h"
 #include"request.h"
 #include<QMessageBox>
+#include<vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,24 +45,36 @@ public:
     int getUserIsLogin();
     void readProfile();
 
+    void listChange2();
+    void userMsgChange(QString user);
+    void groupMsgChange(QString user);
+    void channelMsgChange(QString user);
 
-private slots:
-    void listChangeSlot();
+
+public slots:
+
+    void Slot(QString);
     void userMsgChangeSlot(QString);
     void groupMsgChangeSlot(QString);
     void channelMsgChangeSlot(QString);
+
+
 
     void onItemClicked (QListWidgetItem* item);
 
 
 
-
+private slots:
 
     void on_sendButton1_clicked();
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
+
+
 #endif // MAINWINDOW_H

@@ -1,6 +1,7 @@
 QT       += core gui \
     quick
 QT+=network
+QT+=concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -11,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     file.cpp \
+    listupdatethread.cpp \
     login1.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,17 +20,20 @@ SOURCES += \
     request.cpp \
     signup.cpp \
     thread1.cpp \
-    user.cpp
+    user.cpp \
+    usermsgthread.cpp
 
 HEADERS += \
     file.h \
+    listupdatethread.h \
     login1.h \
     mainwindow.h \
     message.h \
     request.h \
     signup.h \
     thread1.h \
-    user.h
+    user.h \
+    usermsgthread.h
 
 FORMS += \
     login1.ui \

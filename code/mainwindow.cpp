@@ -1,10 +1,15 @@
-#include "mainwindow.h"
+ #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"thread1.h"
+#include"listupdatethread.h"
+#include"usermsgthread.h"
+#include<QTimer>
 //#include"file.h"
 //#include"message.h"
 //#include"request.h"
 //#include<QMessageBox>
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,11 +17,42 @@ MainWindow::MainWindow(QWidget *parent)
 {ui->setupUi(this);
 
     file f;
+    request r;
     user user1=f.readProfile();
     UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
+
+   // f.saveGroupList(r.getGroupListRequest(getUserToken()));
+   // f.saveGroupChats(r.getGroupChats(getUserToken(),"hhh"));
+    userToken="4792851ec99c09812ccf96403a36fe67";
+
     startGroupList();
     startChannelList();
     startUserList();
+    QJsonObject jo=r.getUserListRequest(userToken);
+    QJsonObject jo1=r.getGroupListRequest(userToken);
+    QJsonObject jo2=r.getChannelListRequest(userToken);
+    f.saveUserList(jo);
+    f.saveGroupList(jo1);
+    f.saveChannelList(jo2);
+
+    qDebug()<<userToken<<"::::::::";
+
+// QTimer::singleShot(500, this, [=](){
+
+//        listUpdateThread* lu=new listUpdateThread(userToken,this);
+//        userMsgThread* um=new userMsgThread(userToken,this);
+
+//        lu->start();
+//       // um->start();
+
+
+
+//        lu->wait();
+//       // um->wait();
+
+
+// });
+
 
     ui->nameFrame->setStyleSheet("background-color: red;");
 }
@@ -73,8 +109,11 @@ void MainWindow::startUserList(){
     QListWidgetItem *item;
 
 
+std::reverse(userlist.begin(),userlist.end());
+
 
     for(int i=0;i<userlist.size();i++){
+      //  qDebug()<<userlist[i]<<" ";
       item = new QListWidgetItem();
       item->setText(userlist[i]);
       item->setSizeHint(QSize(1,50));
@@ -92,14 +131,14 @@ void MainWindow::startUserList(){
 
 
 void MainWindow::startGroupList(){
-
+ui->GroupList->clear();
     file f;
 
     vector<QString> GroupList=f.readGroupList();
 
     QListWidgetItem *item;
 
-
+std::reverse(GroupList.begin(),GroupList.end());
 
     for(int i=0;i<GroupList.size();i++){
       item = new QListWidgetItem();
@@ -116,7 +155,7 @@ void MainWindow::startGroupList(){
 
 }
 void MainWindow::startChannelList(){
-
+ui->ChannelList->clear();
     file f;
 
     vector<QString> ChannelList=f.readChannelList();
@@ -124,6 +163,8 @@ void MainWindow::startChannelList(){
     QListWidgetItem *item;
 
 
+
+    std::reverse(ChannelList.begin(),ChannelList.end());
 
     for(int i=0;i<ChannelList.size();i++){
       item = new QListWidgetItem();
@@ -196,21 +237,159 @@ void MainWindow::on_sendButton1_clicked()
    request req;
    req.sendMessage(getUserToken(),getCurDst(),ui->messageTextEdit->toPlainText(),getDstType());
 
-    QJsonObject qobj1=req.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","star");
-    f.saveUserChats(qobj1);
-    startUserList();
+   QJsonObject qobj1;
+
+   ofstream file1;
+   vector<QString> vec;
+   QString path;
+
+   if(QString::compare(getDstType(),"user")==0){
+       vec=f.readUserList();
+
+       path=QDir::currentPath()+"/Users/UserList.txt";
+
+     //  qobj1=req.getUserChats(getUserToken(),getCurDst());
+//       f.saveUserChats(qobj1);
+
+   }
+   else if(QString::compare(getDstType(),"group")==0){
+       vec=f.readGroupList();
+
+       path=QDir::currentPath()+"/Groups/GroupList.txt";
+
+    //   qobj1=req.getGroupChats(getUserToken(),getCurDst());
+    //   f.saveGroupChats(qobj1);
+   }
+   else if(QString::compare(getDstType(),"channel")==0){
+       vec=f.readChannelList();
+       path=QDir::currentPath()+"/Channels/ChannelList.txt";
+
+     //  qobj1=req.getChannelChats(getUserToken(),getCurDst());
+     //  f.saveChannelChats(qobj1);
+   }
+
+   auto iter = std::find(vec.begin(), vec.end(), getCurDst());
+       if (iter != vec.begin()) {
+           std::iter_swap(iter, vec.begin());
+       }
+
+   file1.open(path.toStdString());
+
+   for(int i=0;i<vec.size();i++){
+       file1<<vec[i].toStdString()<<"\n";
+   }
+
+  file1.close();
+
+  if(QString::compare(getDstType(),"user")==0){startUserList();}
+  else if(QString::compare(getDstType(),"group")==0){startGroupList();}
+  else if(QString::compare(getDstType(),"group")==0){startChannelList();}
+
 
 }
 
 
-void MainWindow::listChangeSlot(){
 
-    qDebug()<<"list changed";
-       startUserList();
-       startChannelList();
-       startUserList();
+
+void MainWindow::Slot(QString s){
+    qDebug()<<"fffffffffffffffff";
+    ui->usersList->clear();
+}
+
+
+
+void MainWindow::listChange2(){
+
+     startUserList();
 
 }
+
+void MainWindow::userMsgChange(QString user){
+
+    qDebug()<<"message changed";
+    vector<QString> vec;
+    file f;
+
+    vec=f.readUserList();
+
+    auto iter = std::find(vec.begin(), vec.end(), user);
+        if (iter != vec.begin()) {
+            std::iter_swap(iter, vec.begin());
+        }
+    qDebug()<<vec[0];
+
+    ofstream file1;
+    QString path=QDir::currentPath()+"/Users/UserList.txt";
+    file1.open(path.toStdString());
+
+    for(int i=0;i<vec.size();i++){
+        file1<<vec[i].toStdString()<<"\n";
+    }
+
+   file1.close();
+
+   startUserList();
+
+}
+
+void MainWindow::groupMsgChange(QString group){
+
+    qDebug()<<"message changed";
+    vector<QString> vec;
+    file f;
+
+    vec=f.readGroupList();
+
+    auto iter = std::find(vec.begin(), vec.end(), group);
+        if (iter != vec.begin()) {
+            std::iter_swap(iter, vec.begin());
+        }
+    qDebug()<<vec[0];
+
+    ofstream file1;
+    QString path=QDir::currentPath()+"/Groups/GroupList.txt";
+    file1.open(path.toStdString());
+
+    for(int i=0;i<vec.size();i++){
+        file1<<vec[i].toStdString()<<"\n";
+    }
+
+   file1.close();
+
+   startGroupList();
+
+}
+
+void MainWindow::channelMsgChange(QString channel)
+{
+    qDebug()<<"message changed";
+    vector<QString> vec;
+    file f;
+
+    vec=f.readChannelList();
+
+    auto iter = std::find(vec.begin(), vec.end(), channel);
+        if (iter != vec.begin()) {
+            std::iter_swap(iter, vec.begin());
+        }
+    qDebug()<<vec[0];
+
+    ofstream file1;
+    QString path=QDir::currentPath()+"/Channels/ChannelList.txt";
+    file1.open(path.toStdString());
+
+    for(int i=0;i<vec.size();i++){
+        file1<<vec[i].toStdString()<<"\n";
+    }
+
+   file1.close();
+
+   startChannelList();
+}
+
+
+
+
 
 
 void MainWindow::userMsgChangeSlot(QString user){
@@ -244,10 +423,23 @@ void MainWindow::channelMsgChangeSlot(QString user)
 
 }
 
+
+
+
 void MainWindow::on_pushButton_clicked()
 {
     thread1 t;
-    t.ListOperation("d69f3713c9f0c11b812db3bfe57fcd29");
+    t.ListOperation("d69f3713c9f0c11b812db3bfe57fcd29",this);
     qDebug()<<"finished";
+}
+
+
+
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+     startUserList();
 }
 
