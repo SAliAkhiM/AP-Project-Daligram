@@ -31,18 +31,15 @@ int main(int argc, char *argv[])
 
     signUp *su=new signUp();
 
+
     if(user1.getIsLogin()==0){
         f.deleteFolders();
         su->show();
     }
 
 
-//    while(user1.getIsLogin()==0){
-//        f.readProfile();
 
-//    }
-
-
+     else{
     MainWindow* w=new MainWindow;
     w->show();
 
@@ -53,7 +50,7 @@ int main(int argc, char *argv[])
         channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
 
         lu->start();
-        um->start();
+        um->start();}
         //gm->start();
         //cm->start();
 

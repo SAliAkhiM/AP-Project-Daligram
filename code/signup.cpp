@@ -1,24 +1,5 @@
 #include "signup.h"
 #include "ui_signup.h"
-#include"request.h"
-#include"file.h"
-#include"login1.h"
-#include"message.h"
-
-#include <QLineEdit>
-#include <QPushButton>
-#include<fstream>
-#include<QDir>
-#include<QMessageBox>
-#include <QApplication>
-#include <QCoreApplication>
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
-#include <QNetworkReply>
-#include <QUrl>
-#include <QDebug>
-#include <QJsonDocument>
-#include <QJsonObject>
 
 
 signUp::signUp(QWidget *parent) :
@@ -63,6 +44,24 @@ void signUp::on_pushButton_clicked()
 
    f.saveProfile1(username1,password1,token);
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   user user1=f.readProfile();
+
+
+   MainWindow* w=new MainWindow;
+   w->show();
+
+
+       listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
+       userMsgThread* um=new userMsgThread(user1.getToken(),w);
+//       groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
+//       channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
+
+       lu->start();
+       um->start();
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 

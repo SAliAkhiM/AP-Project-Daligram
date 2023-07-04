@@ -1,8 +1,33 @@
 #ifndef SIGNUP_H
 #define SIGNUP_H
 
-#include"request.h"
 #include <QDialog>
+
+#include"mainwindow.h"
+
+#include"request.h"
+#include"file.h"
+#include"login1.h"
+#include"message.h"
+
+#include"listupdatethread.h"
+#include"usermsgthread.h"
+
+#include <QLineEdit>
+#include <QPushButton>
+#include<fstream>
+#include<QDir>
+#include<QMessageBox>
+#include <QApplication>
+#include <QCoreApplication>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QDebug>
+#include <QJsonDocument>
+#include <QJsonObject>
+
 
 namespace Ui {
 class signUp;
