@@ -8,7 +8,6 @@
 void listUpdateThread::ListOperation(QString token, MainWindow *m)
 {
 
-    QListWidgetItem *item;
     while(1){
 
     file f;
@@ -25,22 +24,22 @@ void listUpdateThread::ListOperation(QString token, MainWindow *m)
     prevUserlist=f.readUserList();
     prevGrouplist=f.readGroupList();
     prevChannellist=f.readChannelList();
-qDebug()<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+qDebug()<<"1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
 
     QJsonObject json1=r.getUserListRequest(token);
     QJsonObject json2=r.getGroupListRequest(token);
     QJsonObject json3=r.getChannelListRequest(token);
-qDebug()<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+qDebug()<<"2>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 
     f.saveUserList(json1);
     f.saveGroupList(json2);
     f.saveChannelList(json3);
-qDebug()<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+qDebug()<<"3<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     curUserlist=f.readUserList();
     curGrouplist=f.readGroupList();
     curChannellist=f.readChannelList();
 
-qDebug()<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+qDebug()<<"4>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     if(prevUserlist!=curUserlist||prevGrouplist!=curGrouplist||prevChannellist!=curChannellist){
 
       m->startChannelList();

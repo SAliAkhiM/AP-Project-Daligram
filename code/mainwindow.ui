@@ -13,60 +13,85 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>371</width>
-      <height>641</height>
+      <x>10</x>
+      <y>10</y>
+      <width>361</width>
+      <height>611</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>9</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 64, 64);
+font: 700 9pt &quot;Segoe UI&quot;;
+font: 10pt &quot;Comic Sans MS&quot;;
+selection-background-color: rgb(85, 255, 0);
+color: rgb(0, 60, 88);
+selection-background-color: rgb(170, 255, 127);
+selection-color: rgb(0, 0, 0);
+font: 700 9pt &quot;Comic Sans MS&quot;;</string>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Users">
      <attribute name="title">
       <string>Users</string>
      </attribute>
-     <widget class="QLineEdit" name="UsersSearch">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>351</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string> Search</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="UsersSearch_2">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>37</y>
-        <width>351</width>
-        <height>24</height>
+        <x>20</x>
+        <y>10</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;New User Chat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/additional-plus-icon-vector.png);</string>
+      </property>
       <property name="text">
-       <string>search</string>
+       <string/>
       </property>
      </widget>
      <widget class="QListWidget" name="usersList">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>67</y>
-        <width>351</width>
-        <height>541</height>
+        <x>10</x>
+        <y>57</y>
+        <width>341</width>
+        <height>521</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comic Sans MS</family>
+        <pointsize>9</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 114, 114);</string>
       </property>
      </widget>
     </widget>
@@ -78,36 +103,29 @@
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>67</y>
-        <width>351</width>
-        <height>541</height>
+        <y>57</y>
+        <width>341</width>
+        <height>521</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>351</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string> Search</string>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 114, 114);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>37</y>
-        <width>351</width>
-        <height>24</height>
+        <x>20</x>
+        <y>10</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/additional-plus-icon-vector.png);</string>
+      </property>
       <property name="text">
-       <string> Search</string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -119,23 +137,29 @@
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>67</y>
-        <width>351</width>
+        <y>57</y>
+        <width>341</width>
         <height>521</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 114, 114);</string>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>351</width>
-        <height>22</height>
+        <x>20</x>
+        <y>10</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="placeholderText">
-       <string> Search</string>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/additional-plus-icon-vector.png);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -144,9 +168,9 @@
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>40</y>
+      <y>20</y>
       <width>621</width>
-      <height>591</height>
+      <height>611</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -159,10 +183,15 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>20</y>
+       <y>10</y>
        <width>621</width>
-       <height>51</height>
+       <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(136, 0, 0);
+color: rgb(255, 255, 255);
+font: 700 12pt &quot;Segoe UI&quot;;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -179,6 +208,9 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>name</string>
       </property>
@@ -193,15 +225,21 @@
        <height>471</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;</string>
+     </property>
     </widget>
     <widget class="QTextEdit" name="messageTextEdit">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>540</y>
-       <width>581</width>
-       <height>51</height>
+       <width>551</width>
+       <height>61</height>
       </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>IBeamCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">
@@ -211,25 +249,72 @@ border-top-color: rgb(0, 0, 0);</string>
     <widget class="QPushButton" name="sendButton1">
      <property name="geometry">
       <rect>
-       <x>582</x>
-       <y>538</y>
-       <width>41</width>
+       <x>570</x>
+       <y>550</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix1/60525.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>540</y>
+       <width>71</width>
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
      </property>
     </widget>
+    <zorder>label_2</zorder>
+    <zorder>nameFrame</zorder>
+    <zorder>messageList</zorder>
+    <zorder>messageTextEdit</zorder>
+    <zorder>sendButton1</zorder>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-1</y>
+      <width>1001</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/prefix1/Screenshot 2023-06-29 023122.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>430</x>
       <y>0</y>
       <width>83</width>
       <height>29</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>thread</string>
@@ -238,29 +323,25 @@ border-top-color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>570</x>
       <y>0</y>
       <width>83</width>
       <height>29</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);
+color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>fff</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>10</y>
-      <width>63</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
+   <zorder>label</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>frame</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -268,7 +349,7 @@ border-top-color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

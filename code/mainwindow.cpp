@@ -446,3 +446,24 @@ void MainWindow::on_pushButton_2_clicked()
      startUserList();
 }
 
+
+void MainWindow::on_UsersSearch_2_clicked()
+{
+    newUserChats *nuc=new newUserChats;
+    nuc->show();
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    CreateJoinGroups *cjg=new CreateJoinGroups;
+    cjg->show();
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    CreateJoinChannels *cjc=new CreateJoinChannels;
+    cjc->show();
+}
+

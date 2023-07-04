@@ -1,24 +1,20 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>Pair_programming_1.jpg</file>
         <file>hide.png</file>
         <file>show.png</file>
         <file>free-login-button-icon-11911-thumb.png</file>
         <file>red-neon-button-glowing-neon-button-png.png</file>
         <file>sign-up-label-icon.png</file>
         <file>5a83032cabc3d121aba71228.png</file>
-        <file>1103720.jpg</file>
         <file>Screenshot 2023-06-29 023122.png</file>
-        <file>wp6370545.jpg</file>
-        <file>wallpapersden.com_money-heist-mask_3000x1900.jpg</file>
-        <file>la-casa-de-papel-title-with-dali-mask-clothes-red-design-graphic-netflix-film-abstract-illustration-money-heist-in-black-background-free-vector.jpg</file>
-        <file>attachment_101873282.png</file>
-        <file>51J3enZILNL.jpg</file>
         <file>18839.jpg</file>
         <file>pngtree-indonesia-independence-day-festival-celebration-red-and-white-flag-doodle-picture-image_1453036.jpg</file>
         <file>red-and-white-background-design-flat-and-minimalist-background-design-illustration-vector.jpg</file>
         <file>92-924235_fluorescent-red-rectangle-stickers-blank-sticker-label-png.png</file>
         <file>logout.png</file>
         <file>neumorphic-rectangle-button-free-png.png</file>
+        <file>60525.png</file>
+        <file>plus.png</file>
+        <file>additional-plus-icon-vector.png</file>
     </qresource>
 </RCC>
