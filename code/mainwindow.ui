@@ -45,7 +45,7 @@ selection-color: rgb(0, 0, 0);
 font: 700 9pt &quot;Comic Sans MS&quot;;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Users">
      <attribute name="title">
@@ -183,9 +183,9 @@ font: 700 9pt &quot;Comic Sans MS&quot;;</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>10</y>
+       <y>20</y>
        <width>621</width>
-       <height>61</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -303,30 +303,13 @@ border-top-color: rgb(0, 0, 0);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>0</y>
-      <width>83</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);
-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>thread</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>910</x>
       <y>0</y>
       <width>83</width>
-      <height>29</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -334,13 +317,12 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>fff</string>
+     <string>log out</string>
     </property>
    </widget>
    <zorder>label</zorder>
    <zorder>tabWidget</zorder>
    <zorder>frame</zorder>
-   <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -349,7 +331,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

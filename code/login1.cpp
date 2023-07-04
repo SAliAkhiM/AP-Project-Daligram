@@ -28,12 +28,15 @@ void login1::on_logIn_pushButton_clicked()
 
     QJsonObject qobj=req.logInRequest(username1,password1);
 
+
     QString message=qobj.value("message").toString();
     QString code=qobj.value("code").toString();
     QString token=qobj.value("token").toString();
 
     f.saveProfile1(username1,password1,token);
-    qDebug()<<token;
+
+
+    QMessageBox::information(this,code,message);
 
 }
 

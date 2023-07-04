@@ -185,16 +185,24 @@ void file:: saveUserList(QJsonObject jsonobj){
 }
 
 void file::saveUserChats(QJsonObject jsonobj){
-
+    QString path;
     std::ofstream file1;
-    QString path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("src")).toString())+".txt";//prob is here
+    file f;
+    user user1=f.readProfile();
+
+
+    if(QString::compare(user1.getUserName(),((jsonobj.value("block 0").toObject()).value("dst")).toString())==0){
+    path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("src")).toString())+".txt";}//prob is here
+
+    else{
+    path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("dst")).toString())+".txt";}//prob is here
 
     //qDebug()<<path<<":::::::::::::::::::::::::::::";
 
     file1.open(path.toStdString());
 
     request req;
-    file f;
+
     int chatNum=f.getNum(jsonobj.value("message").toString(),"chatlist");
 
     file1<<chatNum<<"\n";
@@ -209,8 +217,8 @@ void file::saveUserChats(QJsonObject jsonobj){
 
     file1.close();
 }
-   // else
-   //     throw "failed to open the file";
+    else{
+        qDebug()<< "failed to open the file";}
 
 }
 
@@ -237,8 +245,8 @@ void file::saveGroupChats(QJsonObject jsonobj){
 
     file1.close();
 }
-   // else
-     //   throw "failed to open the file";
+    else{
+        qDebug()<< "failed to open the file";}
 
 }
 
@@ -264,8 +272,8 @@ void file::saveChannelChats(QJsonObject jsonobj){
 
     file1.close();
 }
-  //  else
-    //    throw "failed to open the file";
+    else{
+        qDebug()<< "failed to open the file";}
 
 }
 
@@ -294,8 +302,8 @@ vector<QString> file::readUserList(){
     file1.close();
     return userlist;
 }
-//    else
-//        throw "failed to open the file";
+   else{
+        qDebug()<< "failed to open the file";}
 }
 
 vector<QString> file::readGroupList(){
@@ -312,19 +320,24 @@ vector<QString> file::readGroupList(){
     if(file1.is_open()){
 
 
+      //  file1.seekg(0, std::ios::end);
+   //     if(file1.tellg() != 0){
         file1>>user;
         user1=QString::fromStdString(user);
     while(!file1.eof()){
         grouplist.push_back(user1);
         file1>>user;
-        user1=QString::fromStdString(user);
-    }
+        user1=QString::fromStdString(user);}
+ //   }
+     //   else{
+           // qDebug()<<"file is empty";
+     //   }
 
     file1.close();
     return grouplist;
 }
- //   else
-  //      throw "failed to open the file";
+    else{
+        qDebug()<< "failed to open the file";}
 }
 
 vector<QString> file::readChannelList(){
@@ -352,8 +365,8 @@ vector<QString> file::readChannelList(){
     file1.close();
     return channellist;
 }
-//    else
- //       throw "failed to open the file";
+    else{
+        qDebug()<< "failed to open the file";}
 }
 
 vector<messageClass> file::readUserMessages(QString token,QString dst2){
@@ -421,8 +434,8 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     }
 
     else{
-        qDebug()<<"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
-      //  throw "failed to open the file";
+        qDebug()<< "failed to open the file";
+
 }
 
 }
@@ -490,7 +503,7 @@ vector<messageClass> file::readChannelMessages(QString token,QString dst2){
     }
 
     else{
-        throw "failed to open the file";
+        qDebug()<< "failed to open the file";
 }
 
 }
@@ -558,7 +571,7 @@ vector<messageClass> file::readGroupMessages(QString token,QString dst2){
     }
 
     else{
-        throw "failed to open the file";
+        qDebug()<< "failed to open the file";
 }
 
 }
