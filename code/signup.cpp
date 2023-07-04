@@ -75,26 +75,6 @@ void signUp::on_pushButton_3_clicked()
 }
 
 
-void signUp::on_pushButton_4_clicked()
-{
-   // request r;
-
-
-    file f;
-    request r;
-    vector<messageClass> v;
-
-
-    QJsonObject qobj=r.getUserListRequest("d69f3713c9f0c11b812db3bfe57fcd29");
-    QJsonObject qobj1=r.getUserChats("d69f3713c9f0c11b812db3bfe57fcd29","kkk");
-
-   f.saveUserList(qobj);
-   f.saveUserChats(qobj1);
-
-
-
-}
-
 
 
 

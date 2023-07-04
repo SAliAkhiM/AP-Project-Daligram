@@ -127,8 +127,8 @@ void file:: saveGroupList(QJsonObject jsonobj){
 
     file1.close();
 }
-   // else
-     //   throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 
 
 
@@ -154,8 +154,8 @@ void file:: saveChannelList(QJsonObject jsonobj){
 
     file1.close();
 }
- //   else
-        //throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 
 
 }
@@ -179,22 +179,32 @@ void file:: saveUserList(QJsonObject jsonobj){
 
     file1.close();
 }
-  //  else
-    //    throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 
 }
 
 void file::saveUserChats(QJsonObject jsonobj){
 
     std::ofstream file1;
-    QString path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("src")).toString())+".txt";//prob is here
+    file f;  request req;
+    QString path;
+    user user1;
+    user1=f.readProfile();
+
+    if(QString::compare(user1.getUserName(),(((jsonobj.value("block 0").toObject()).value("dst")).toString()))==0){
+    path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("src")).toString())+".txt";}
+
+    else{
+        path=QDir::currentPath()+"/Users/"+(((jsonobj.value("block 0").toObject()).value("dst")).toString())+".txt";
+    }
 
     //qDebug()<<path<<":::::::::::::::::::::::::::::";
 
     file1.open(path.toStdString());
 
-    request req;
-    file f;
+
+
     int chatNum=f.getNum(jsonobj.value("message").toString(),"chatlist");
 
     file1<<chatNum<<"\n";
@@ -209,8 +219,8 @@ void file::saveUserChats(QJsonObject jsonobj){
 
     file1.close();
 }
-   // else
-   //     throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 
 }
 
@@ -237,8 +247,8 @@ void file::saveGroupChats(QJsonObject jsonobj){
 
     file1.close();
 }
-   // else
-     //   throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 
 }
 
@@ -264,9 +274,8 @@ void file::saveChannelChats(QJsonObject jsonobj){
 
     file1.close();
 }
-  //  else
-    //    throw "failed to open the file";
-
+    else{
+        qDebug()<<"couldnt open file";}
 }
 
 vector<QString> file::readUserList(){
@@ -294,8 +303,8 @@ vector<QString> file::readUserList(){
     file1.close();
     return userlist;
 }
-//    else
-//        throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 }
 
 vector<QString> file::readGroupList(){
@@ -323,8 +332,8 @@ vector<QString> file::readGroupList(){
     file1.close();
     return grouplist;
 }
- //   else
-  //      throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 }
 
 vector<QString> file::readChannelList(){
@@ -352,8 +361,8 @@ vector<QString> file::readChannelList(){
     file1.close();
     return channellist;
 }
-//    else
- //       throw "failed to open the file";
+    else{
+        qDebug()<<"couldnt open file";}
 }
 
 vector<messageClass> file::readUserMessages(QString token,QString dst2){
@@ -421,9 +430,7 @@ vector<messageClass> file::readUserMessages(QString token,QString dst2){
     }
 
     else{
-        qDebug()<<"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
-      //  throw "failed to open the file";
-}
+        qDebug()<<"couldnt open file";}
 
 }
 
@@ -490,8 +497,7 @@ vector<messageClass> file::readChannelMessages(QString token,QString dst2){
     }
 
     else{
-        throw "failed to open the file";
-}
+        qDebug()<<"couldnt open file";}
 
 }
 
@@ -558,15 +564,45 @@ vector<messageClass> file::readGroupMessages(QString token,QString dst2){
     }
 
     else{
-        throw "failed to open the file";
-}
+        qDebug()<<"couldnt open file";}
 
 }
 
+void file:: deleteFilesInDir(const std::string& dirPath) {
+    DIR* dir = opendir(dirPath.c_str());
+    if (dir == nullptr) {
+        qDebug() << "Error: could not open directory ";
+        return;
+    }
 
-//void file::buildFiles(QString token){
+    dirent* entry;
+    std::string fileName;
+    while ((entry = readdir(dir)) != nullptr) {
+        fileName = entry->d_name;
+        if (fileName != "." && fileName != "..") {
+            std::string fullPath = dirPath + "/" + fileName;
+            std::remove(fullPath.c_str());
+        }
+    }
+    qDebug() << "done";
+
+    closedir(dir);
+}
 
 
-//    vector<QString> vec;
 
-//}
+
+void file::deleteFolders()
+{
+    string path1=QDir::currentPath().toStdString()+"/Groups";
+    string path2=QDir::currentPath().toStdString()+"/Users";
+    string path3=QDir::currentPath().toStdString()+"/Channels";
+
+    deleteFilesInDir(path1);
+    deleteFilesInDir(path2);
+    deleteFilesInDir(path3);
+}
+
+
+
+

@@ -1,10 +1,12 @@
 #ifndef FILE_H
 #define FILE_H
 #include <QJsonObject>
+#include <dirent.h>
 #include<vector>
 #include"qstring.h"
 #include"message.h"
 #include"user.h"
+
 
 using namespace std;
 
@@ -29,6 +31,8 @@ public:
  vector<messageClass> readUserMessages(QString token,QString dst2);
  vector<messageClass> readChannelMessages(QString token,QString dst2);
  vector<messageClass> readGroupMessages(QString token,QString dst2);
+ void deleteFilesInDir(const std::string& dirPath);
+ void deleteFolders();
 // void buildFiles(QString token);
 
 

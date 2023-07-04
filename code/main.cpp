@@ -11,42 +11,57 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include<QString>
+#include"groupmsgthread.h"
+#include"channelmsgthread.h"
 
 //MainWindow* wi=new MainWindow;
 //static MainWindow wi;
 
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
+
+    file f;
+    request r;
+    user user1=f.readProfile();
+
+
+
+    signUp *su=new signUp();
+
+    if(user1.getIsLogin()==0){
+        f.deleteFolders();
+        su->show();
+    }
+
+
+//    while(user1.getIsLogin()==0){
+//        f.readProfile();
+
+//    }
 
 
     MainWindow* w=new MainWindow;
     w->show();
 
 
-    file f;
-    request r;
-    user user1=f.readProfile();
+        listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
+        userMsgThread* um=new userMsgThread(user1.getToken(),w);
+        groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
+        channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
 
-    listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
-    userMsgThread* um=new userMsgThread(user1.getToken(),w);
-
-    lu->start();
-    um->start();
-
-
-
-   // lu->wait();
-   // um->wait();
+        lu->start();
+        um->start();
+        //gm->start();
+        //cm->start();
 
 
 
 
-    signUp *su=new signUp();
-    su->show();
 
 
     return a.exec();
 }
+

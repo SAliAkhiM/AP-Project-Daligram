@@ -23,8 +23,11 @@ MainWindow::MainWindow(QWidget *parent)
     user user1=f.readProfile();
     UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
 
-   // f.saveGroupList(r.getGroupListRequest(getUserToken()));
-   // f.saveGroupChats(r.getGroupChats(getUserToken(),"hhh"));
+    r.joinChannel(userToken,"deauflt1");
+    r.joinGroup(userToken,"deauflt");
+    r.sendMessage(userToken ,"hafez","hello","user");
+
+
 
 
     QJsonObject jo=r.getUserListRequest(userToken);
@@ -114,6 +117,7 @@ std::reverse(userlist.begin(),userlist.end());
 
     for(int i=0;i<userlist.size();i++){
       //  qDebug()<<userlist[i]<<" ";
+         if(QString::compare(userlist[i],"hafez")!=0){
       item = new QListWidgetItem();
       item->setText(userlist[i]);
       item->setSizeHint(QSize(1,50));
@@ -121,6 +125,7 @@ std::reverse(userlist.begin(),userlist.end());
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->usersList->addItem(item);
+    }
     }
 
 //  connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
@@ -141,6 +146,7 @@ ui->GroupList->clear();
 std::reverse(GroupList.begin(),GroupList.end());
 
     for(int i=0;i<GroupList.size();i++){
+        if(QString::compare(GroupList[i],"default")!=0){
       item = new QListWidgetItem();
       item->setText(GroupList[i]);
       item->setSizeHint(QSize(1,50));
@@ -148,6 +154,7 @@ std::reverse(GroupList.begin(),GroupList.end());
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->GroupList->addItem(item);
+    }
     }
 
 //  connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
@@ -167,6 +174,7 @@ ui->ChannelList->clear();
     std::reverse(ChannelList.begin(),ChannelList.end());
 
     for(int i=0;i<ChannelList.size();i++){
+         if(QString::compare(ChannelList[i],"default1")!=0){
       item = new QListWidgetItem();
       item->setText(ChannelList[i]);
       item->setSizeHint(QSize(1,50));
@@ -174,6 +182,7 @@ ui->ChannelList->clear();
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->ChannelList->addItem(item);
+    }
     }
 
 //  connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));

@@ -83,24 +83,6 @@ color: rgb(255, 255, 255);</string>
     <string>LOG IN</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>590</y>
-     <width>201</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14pt   &quot;Arial&quot;;
-color: rgb(255, 255, 255);
-background-image: url(:/new/prefix1/1103720.jpg);</string>
-   </property>
-   <property name="text">
-    <string>join</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit_1">
    <property name="geometry">
     <rect>
@@ -249,7 +231,6 @@ color: rgb(255, 255, 255);</string>
   <zorder>label_5</zorder>
   <zorder>pushButton_3</zorder>
   <zorder>pushButton</zorder>
-  <zorder>pushButton_4</zorder>
   <zorder>checkBox</zorder>
  </widget>
  <resources/>
