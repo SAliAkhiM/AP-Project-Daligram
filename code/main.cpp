@@ -2,8 +2,6 @@
 #include"signup.h"
 #include"listupdatethread.h"
 #include"usermsgthread.h"
-#include"groupmsgthread.h"
-#include"channelmsgthread.h"
 #include <QApplication>
 #include <QCoreApplication>
 #include <QNetworkAccessManager>
@@ -17,46 +15,38 @@
 //MainWindow* wi=new MainWindow;
 //static MainWindow wi;
 
-
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+//    MainWindow w;
+//    w.show();
+
+
+    MainWindow* w=new MainWindow;
+    w->show();
+
 
     file f;
     request r;
     user user1=f.readProfile();
-    qDebug()<<user1.getToken();
 
-    signUp *su=new signUp;
-    MainWindow* w=new MainWindow;
+    listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
+    userMsgThread* um=new userMsgThread(user1.getToken(),w);
 
-
-w->show();/////////////////////////////////////////////////////////////
-su->show();
+    lu->start();
+    um->start();
 
 
-        listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
-        userMsgThread* um=new userMsgThread(user1.getToken(),w);
-        groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
-        channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
 
-
-        qDebug()<<user1.getToken();
-
-
-        lu->start();
-        um->start();
-        gm->start();
-        cm->start();
+   // lu->wait();
+   // um->wait();
 
 
 
 
-
-
+    signUp *su=new signUp();
+    su->show();
 
 
     return a.exec();
 }
-

@@ -17,7 +17,6 @@ public:
     request();
      QJsonObject signUpRequest(QString username,QString password,QString firstname,QString lastname);
      QJsonObject logInRequest(QString username,QString password);
-     QJsonObject logOutRequest(QString username,QString password);
      QJsonObject createGroupRequest(QString groupName ,QString groupTitle ,QString token);
      QJsonObject createChannelRequest(QString channelName ,QString channelTitle ,QString token);
      QJsonObject joinGroup(QString token,QString groupname);

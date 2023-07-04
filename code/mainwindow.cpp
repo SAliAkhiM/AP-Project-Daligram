@@ -26,9 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
    // f.saveGroupList(r.getGroupListRequest(getUserToken()));
    // f.saveGroupChats(r.getGroupChats(getUserToken(),"hhh"));
 
-   r.joinGroup(userToken,"default");
-   r.joinChannel(userToken,"default1");
-   r.sendMessage(userToken,"hafez","default","user");
 
     QJsonObject jo=r.getUserListRequest(userToken);
     QJsonObject jo1=r.getGroupListRequest(userToken);
@@ -116,7 +113,6 @@ std::reverse(userlist.begin(),userlist.end());
 
 
     for(int i=0;i<userlist.size();i++){
-         if(QString::compare(userlist[i],"hafez")!=0){
       //  qDebug()<<userlist[i]<<" ";
       item = new QListWidgetItem();
       item->setText(userlist[i]);
@@ -125,7 +121,6 @@ std::reverse(userlist.begin(),userlist.end());
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->usersList->addItem(item);
-         }
     }
 
 //  connect(ui->usersList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
@@ -145,10 +140,7 @@ ui->GroupList->clear();
 
 std::reverse(GroupList.begin(),GroupList.end());
 
-
-//if(GroupList.size()!=0){
     for(int i=0;i<GroupList.size();i++){
-        if(QString::compare(GroupList[i],"default")!=0){
       item = new QListWidgetItem();
       item->setText(GroupList[i]);
       item->setSizeHint(QSize(1,50));
@@ -156,12 +148,7 @@ std::reverse(GroupList.begin(),GroupList.end());
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->GroupList->addItem(item);
-        }
     }
-//}
-//else{
-//    qDebug()<<"no group";
-//}
 
 //  connect(ui->GroupList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
 //  emit(item);
@@ -180,7 +167,6 @@ ui->ChannelList->clear();
     std::reverse(ChannelList.begin(),ChannelList.end());
 
     for(int i=0;i<ChannelList.size();i++){
-         if(QString::compare(ChannelList[i],"default1")!=0){
       item = new QListWidgetItem();
       item->setText(ChannelList[i]);
       item->setSizeHint(QSize(1,50));
@@ -188,7 +174,6 @@ ui->ChannelList->clear();
       //item->setToolTip("Item tooltip");
       //item->setWhatsThis("Item what's this");
       ui->ChannelList->addItem(item);
-         }
     }
 
 //  connect(ui->ChannelList,SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onItemClicked(QListWidgetItem*)));
@@ -202,8 +187,6 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
    file f1;
 
 
-   ui->messageTextEdit->hide();
-
     ui->nameLabel->setText(item->text());
 
     ui->messageList->clear();
@@ -213,24 +196,14 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
 
     if(ui->tabWidget->currentIndex()==0){
-        ui->messageTextEdit->show();
-        ui->sendButton1->show();
-
         messages=f.readUserMessages(userToken,item->text());
         setDstType("user");
     }
     else if(ui->tabWidget->currentIndex()==1){
-        ui->messageTextEdit->show();
-        ui->sendButton1->show();
-
         messages=f.readGroupMessages(userToken,item->text());
         setDstType("group");
     }
     else if(ui->tabWidget->currentIndex()==2){
-
-        ui->messageTextEdit->hide();
-        ui->sendButton1->hide();
-
         messages=f.readChannelMessages(userToken,item->text());
         setDstType("channel");
     }
@@ -243,7 +216,7 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
    for(int i=0;i<messages.size();i++){
      messageItem = new QListWidgetItem();
-     messageItem->setText("*"+messages[i].getSrc()+"*\n"+messages[i].getBody());
+     messageItem->setText(messages[i].getBody());
      messageItem->setSizeHint(QSize());
      //item->setIcon(QIcon(":/new/prefix1/hide.png"));
      messageItem->setToolTip(messages[i].getDate());
@@ -263,7 +236,6 @@ void MainWindow::on_sendButton1_clicked()
    file f;
    request req;
    req.sendMessage(getUserToken(),getCurDst(),ui->messageTextEdit->toPlainText(),getDstType());
-   ui->messageTextEdit->clear();
 
    QJsonObject qobj1;
 
@@ -471,26 +443,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    request r;
-    file f;
-    QJsonObject obj;
-    user user1=f.readProfile();
-    obj=r.logOutRequest(user1.getUserName(),user1.getPassword());
-
-    ofstream file1;
-    QString path=QDir::currentPath()+"/Profile/profile.txt";
-    file1.open(path.toStdString());
-
-    file1<<"0";
-
-
-
-
-    QString message=obj.value("message").toString();
-    QString code=obj.value("code").toString();
-    QMessageBox::information(this,code,message);
-
-
+     startUserList();
 }
 
 

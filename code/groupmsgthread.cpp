@@ -18,7 +18,7 @@ void groupMsgThread::groupMsgUpdate(QString token, MainWindow *m)
     request r;
 
     vector<QString> curGrouplist;
-    curGrouplist=f.readGroupList();
+    curGrouplist=f.readUserList();
 
 
     qDebug()<<curGrouplist[0]<<"iiiiiiiiiiiiiiiiiiiii";
