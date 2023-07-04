@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
         channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
 
         lu->start();
-        um->start();}
-        //gm->start();
-        //cm->start();
+        um->start();
+        gm->start();
+        cm->start();
 
-
+}
 
 
 

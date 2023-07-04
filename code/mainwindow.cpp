@@ -23,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     user user1=f.readProfile();
     UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
 
-    r.joinChannel(userToken,"deauflt1");
-    r.joinGroup(userToken,"deauflt");
+    r.joinChannel(userToken,"aaddgfdsfrhfgyukghjhdrt");
+    r.joinGroup(userToken,"dfhdfghfgjgh");
     r.sendMessage(userToken ,"hafez","hello","user");
 
 
@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    ui->nameFrame->setStyleSheet("background-color: red;");
+   // ui->nameFrame->setStyleSheet("background-color: red;");
 }
 void MainWindow::setUserToken(QString t){
     userToken=t;
@@ -146,7 +146,7 @@ ui->GroupList->clear();
 std::reverse(GroupList.begin(),GroupList.end());
 
     for(int i=0;i<GroupList.size();i++){
-        if(QString::compare(GroupList[i],"default")!=0){
+        if(QString::compare(GroupList[i],"dfhdfghfgjgh")!=0){
       item = new QListWidgetItem();
       item->setText(GroupList[i]);
       item->setSizeHint(QSize(1,50));
@@ -174,7 +174,7 @@ ui->ChannelList->clear();
     std::reverse(ChannelList.begin(),ChannelList.end());
 
     for(int i=0;i<ChannelList.size();i++){
-         if(QString::compare(ChannelList[i],"default1")!=0){
+         if(QString::compare(ChannelList[i],"aaddgfdsfrhfgyukghjhdrt")!=0){
       item = new QListWidgetItem();
       item->setText(ChannelList[i]);
       item->setSizeHint(QSize(1,50));
@@ -225,7 +225,7 @@ void MainWindow::onItemClicked(QListWidgetItem* item){
 
    for(int i=0;i<messages.size();i++){
      messageItem = new QListWidgetItem();
-     messageItem->setText(messages[i].getBody());
+     messageItem->setText("*"+messages[i].getSrc()+"*\n"+messages[i].getBody());
      messageItem->setSizeHint(QSize());
      //item->setIcon(QIcon(":/new/prefix1/hide.png"));
      messageItem->setToolTip(messages[i].getDate());

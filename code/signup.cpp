@@ -50,6 +50,7 @@ void signUp::on_pushButton_clicked()
 
 
    MainWindow* w=new MainWindow;
+   this->hide();
    w->show();
 
 
