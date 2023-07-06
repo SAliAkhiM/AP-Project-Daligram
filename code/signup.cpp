@@ -1,5 +1,7 @@
 #include "signup.h"
 #include "ui_signup.h"
+#include"groupmsgthread.h"
+#include"channelmsgthread.h"
 
 
 signUp::signUp(QWidget *parent) :
@@ -48,7 +50,7 @@ void signUp::on_pushButton_clicked()
 
    user user1=f.readProfile();
 
-
+    r.prepare(user1.getToken());
    MainWindow* w=new MainWindow;
    this->hide();
    w->show();
@@ -56,11 +58,13 @@ void signUp::on_pushButton_clicked()
 
        listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
        userMsgThread* um=new userMsgThread(user1.getToken(),w);
-//       groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
-//       channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
+       groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
+       channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);
 
        lu->start();
        um->start();
+       gm->start();
+       cm->start();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -40,11 +40,17 @@ int main(int argc, char *argv[])
 
 
      else{
+
+    r.prepare(user1.getToken());
+
+
     MainWindow* w=new MainWindow;
     w->show();
 
 
         listUpdateThread* lu=new listUpdateThread(user1.getToken(),w);
+
+
         userMsgThread* um=new userMsgThread(user1.getToken(),w);
         groupMsgThread* gm=new groupMsgThread(user1.getToken(),w);
         channelMsgThread* cm=new channelMsgThread(user1.getToken(),w);

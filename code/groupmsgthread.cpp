@@ -11,19 +11,16 @@ void groupMsgThread::groupMsgUpdate(QString token, MainWindow *m)
 //    file f;
 //    request r;
 
-
-
-    while(1){
     file f;
     request r;
+
+    while(1){
+
 
     vector<QString> curGrouplist;
     curGrouplist=f.readGroupList();
 
 
-    qDebug()<<curGrouplist[0]<<"iiiiiiiiiiiiiiiiiiiii";
-
-    qDebug()<<curGrouplist.size()<<"iiiiiiiiiiiiiiiiiii";
 
 //    vector<messageClass> prevMsg;
 //    vector<messageClass> curMsg;
@@ -46,7 +43,7 @@ void groupMsgThread::groupMsgUpdate(QString token, MainWindow *m)
          qDebug()<<"server delay";
 
        f.saveGroupChats(json4);
-         qDebug()<<"saving msgs";
+         qDebug()<<"saving "+curGrouplist[i]+"group msgs";
 
 //       curMsg=f.readGroupMessages(token,curUserlist[i]);
 

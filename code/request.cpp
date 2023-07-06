@@ -1,5 +1,6 @@
 #include "request.h"
-
+#include"file.h"
+#include"user.h"
 request::request()
 {
 
@@ -42,6 +43,39 @@ request::request()
      QNetworkAccessManager* manager=new QNetworkAccessManager();
      QNetworkRequest request;
      request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/login?username="+username+"&password="+password));
+
+     QNetworkReply * reply=manager->get(request);
+
+
+     while(!reply->isFinished()){
+         QCoreApplication::processEvents();
+     }
+
+
+     if(reply->error()==QNetworkReply::NoError){
+
+         QByteArray data=reply->readAll();
+         QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
+
+         QJsonObject jsonobj=jsonDoc.object();
+         //QString f=jsonobj.value("message").toString();
+
+         return jsonobj ;
+        // return f ;
+
+
+     }
+
+
+
+ }
+
+
+ QJsonObject request::logOutRequest(QString username,QString password){
+
+     QNetworkAccessManager* manager=new QNetworkAccessManager();
+     QNetworkRequest request;
+     request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/logout?username="+username+"&password="+password));
 
      QNetworkReply * reply=manager->get(request);
 
@@ -427,6 +461,43 @@ request::request()
      }
  }
 
- // QJsonObject request::getChannelChats(QString token,QString dst,QString date){
+ void request::prepare(QString token){
 
-  //}
+     file f;
+     request r;
+     user user1=f.readProfile();
+    // UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
+
+     r.joinChannel(token,"aaddgfdsfrhfgyukghjhdrt");
+     r.joinGroup(token,"dfhdfghfgjgh");
+     r.sendMessage(token ,"hafez","hello","user");
+
+
+
+
+     QJsonObject jo=r.getUserListRequest(token);
+     QJsonObject jo1=r.getGroupListRequest(token);
+     QJsonObject jo2=r.getChannelListRequest(token);
+     f.saveUserList(jo);
+     f.saveGroupList(jo1);
+     f.saveChannelList(jo2);
+
+ }
+
+ int request:: isOnline(){
+
+    request r;
+    QJsonObject obj;
+    QString code="default value";
+    obj=r.sendMessage("baf6605150b1d3b2aa4ab17bc49d9a51" ,"hafez","hello","user");
+
+    code=obj.value("code").toString();
+
+    if(QString::compare(code,"200")==0||QString::compare(code,"404")==0||QString::compare(code,"204")==0||QString::compare(code,"401")==0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+
+ }

@@ -4,6 +4,7 @@
 #include"listupdatethread.h"
 #include"usermsgthread.h"
 #include<QTimer>
+#include"signup.h"
 //#include"file.h"
 //#include"message.h"
 //#include"request.h"
@@ -17,25 +18,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {ui->setupUi(this);
+qDebug()<<"00";
+
 
     file f;
     request r;
     user user1=f.readProfile();
     UserIsLogin=user1.getIsLogin();userToken=user1.getToken();userUserName=user1.getUserName();userPassword=user1.getPassword();
 
-    r.joinChannel(userToken,"aaddgfdsfrhfgyukghjhdrt");
-    r.joinGroup(userToken,"dfhdfghfgjgh");
-    r.sendMessage(userToken ,"hafez","hello","user");
-
-
-
-
-    QJsonObject jo=r.getUserListRequest(userToken);
-    QJsonObject jo1=r.getGroupListRequest(userToken);
-    QJsonObject jo2=r.getChannelListRequest(userToken);
-    f.saveUserList(jo);
-    f.saveGroupList(jo1);
-    f.saveChannelList(jo2);
 
     startGroupList();
     startChannelList();
@@ -452,7 +442,32 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-     startUserList();
+     request r;
+     file f;
+     user user1;
+     signUp* su=new signUp;
+
+     user1=f.readProfile();
+     QJsonObject obj=r.logOutRequest(user1.getUserName(),user1.getPassword());
+
+     ofstream file1;
+     QString path=QDir::currentPath()+"/Profile/profile.txt";
+     file1.open(path.toStdString());
+
+     file1<<"0";
+
+     file1.close();
+
+     QString message=obj.value("message").toString();
+     QString code=obj.value("code").toString();
+
+
+    QMessageBox::information(this,code,message);
+    this->hide();
+    su->show();
+
+
+
 }
 
 

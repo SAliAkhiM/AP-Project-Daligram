@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1001</width>
-    <height>687</height>
+    <width>1002</width>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <x>10</x>
       <y>10</y>
       <width>361</width>
-      <height>611</height>
+      <height>621</height>
      </rect>
     </property>
     <property name="font">
@@ -228,7 +228,9 @@ font: 14pt &quot;Segoe UI&quot;;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;</string>
+      <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;
+background-color: rgb(255, 255, 255);
+</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="messageTextEdit">
@@ -253,7 +255,7 @@ border-top-color: rgb(0, 0, 0);</string>
       <rect>
        <x>570</x>
        <y>550</y>
-       <width>31</width>
+       <width>41</width>
        <height>41</height>
       </rect>
      </property>
@@ -293,7 +295,7 @@ border-top-color: rgb(0, 0, 0);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-1</y>
+      <y>-10</y>
       <width>1001</width>
       <height>661</height>
      </rect>
@@ -305,30 +307,13 @@ border-top-color: rgb(0, 0, 0);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>0</y>
-      <width>83</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/new/prefix1/neumorphic-rectangle-button-free-png.png);
-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>thread</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>890</x>
       <y>0</y>
-      <width>83</width>
-      <height>29</height>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -336,13 +321,12 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>fff</string>
+     <string>log out</string>
     </property>
    </widget>
    <zorder>label</zorder>
    <zorder>tabWidget</zorder>
    <zorder>frame</zorder>
-   <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -350,7 +334,7 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1001</width>
+     <width>1002</width>
      <height>25</height>
     </rect>
    </property>
